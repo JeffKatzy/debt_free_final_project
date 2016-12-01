@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Form from '../components/Form.js'
 import Table from '../components/Table.js'
 import SignUp from '../components/users/SignUp.js'
+import SignIn from '../components/users/SignIn.js'
 import { setValue } from '../ducks/period.js'
 import '../App.css';
 
@@ -12,6 +13,7 @@ class App extends Component {
       <div className="App">
         {this.props.children}
         <SignUp />
+        <SignIn />
         <Form setValue={this.props.setValue}/>
         <Table data={this.props.data}/>
       </div>

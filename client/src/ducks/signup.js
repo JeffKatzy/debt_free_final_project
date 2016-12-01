@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router'
 
 export function createUser(formData){
   return function(dispatch){
-    dispatch({type: 'CREATING_USER'})
+    dispatch({type: 'FINDING_USER'})
     $.ajax({
       url: 'http://localhost:3000/users',
       type: 'POST',
@@ -11,7 +11,8 @@ export function createUser(formData){
       contentType:"application/json; charset=utf-8",
       datatype: 'json'
     }).done((response) => {
-      browserHistory.push('/newtask')
+      // browserHistory.push('/newtask')
+      debugger
       localStorage.setItem('token', response.jwt)
       dispatch({type: 'LOGIN_USER', current_user: response.userId})
 
@@ -19,13 +20,13 @@ export function createUser(formData){
   }
 }
 
-export function signup(state = {creating_user: true, current_user: null}, action){
+export function signup(state = {finding_user: true, current_user: null}, action){
   switch (action.type) {
-    case 'CREATING_USER':
-      return {...state, creating_user: true}
+    case 'FINDING_USER':
+      return {...state, finding_user: true}
       break;
     case 'LOGIN_USER':
-      return {...state, creating_user: false, current_user: action.current_user}
+      return {...state, finding_user: false, current_user: action.current_user}
     default:
       return state
   }

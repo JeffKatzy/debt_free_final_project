@@ -1,5 +1,6 @@
 class AuthController < ApplicationController
   def authenticate
+    
     # You'll need to implement the below method. It should return the
     # user instance if the username and password are valid.
     # Otherwise return nil.

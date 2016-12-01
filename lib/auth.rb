@@ -1,4 +1,5 @@
-class Auth
+class Auth < ApplicationController
+  
   def self.issue(payload)
     JWT.encode payload, Rails.application.secrets[:secret_key_base], 'HS256'
   end
