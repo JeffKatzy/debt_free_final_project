@@ -9,6 +9,24 @@ label {
   display: inline-block;
 }
 
+select {
+  font-size: .75em;
+}
+
 #form {
-  
+  padding: 5%;
+}
+
+#userAccess {
+  text-align: left;
+}
+
+#signtitle {
+  font-size: 1.75em;
+  text-align: center;
+}
+
+#userLabel {
+  font-size: 1.25em;
+  padding: 0px 1vw;
 }

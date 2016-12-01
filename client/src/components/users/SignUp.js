@@ -20,7 +20,7 @@ class Signup extends Component {
     this.setState({password: event.target.value})
   }
 
-  handleSubmit(event){ 
+  handleSubmit(event){
     event.preventDefault()
     this.props.createUser(this.state)
   }
@@ -29,21 +29,15 @@ class Signup extends Component {
 
     return(
       <div>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-            <h2> Signup </h2>
-            <p>
-            <label> Name </label>
+        <form id="userAccess" onSubmit={this.handleSubmit.bind(this)}>
+            <span className="two columns" id="signtitle">Signup</span>
+            <label id="userLabel"> Name </label>
             <input type="text" placeholder="Your Name" onChange={this.handleOnNameChange.bind(this)}/>
-            </p>
-            <p>
-            <label> Email </label>
+            <label id="userLabel"> Email </label>
             <input type="text" placeholder="email@email.com" onChange={this.handleOnEmailChange.bind(this)}/>
-            </p>
-            <p>
-            <label> Password </label>
+            <label id="userLabel"> Password </label>
             <input type="password" placeholder="your password" onChange={this.handleOnPasswordChange.bind(this)} />
-            </p>
-            <p> <input type="submit" /> </p>
+            <input type="submit" />
         </form>
       </div>
     )

@@ -22,7 +22,6 @@ class App extends Component {
 }
 
 function mapStateToProps(state){
-  // debugger
   return {data: state.period}
 }
 
