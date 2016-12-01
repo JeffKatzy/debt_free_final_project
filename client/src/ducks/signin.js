@@ -9,12 +9,9 @@ export function findUser(formData){
       data: JSON.stringify({auth: {email: formData.email, password: formData.password}}),
       contentType:"application/json; charset=utf-8",
       datatype: 'json'
-    }).done((response) => {
-      // browserHistory.push('/newtask')
-      
+    }).done((response) => 
       localStorage.setItem('token', response.jwt)
       dispatch({type: 'LOGIN_USER', current_user: response.userId})
-
     })
   }
 }
