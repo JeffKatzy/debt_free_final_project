@@ -15,7 +15,7 @@ class AuthController < ApplicationController
 
   def authentication_payload(user)
     return nil unless user && user.id
-    {
+    {git
       auth_token: AuthToken.encode({ user_id: id }),
       user: { id: user.id, email: user.email } # return whatever user info you need
     }
