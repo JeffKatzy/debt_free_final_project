@@ -13,6 +13,8 @@ const Form = (props) => {
       <h3><select><option>{props.data.creditcard}</option></select></h3>
       <h3><select><option>{props.data.month+", "+props.data.year}</option></select></h3>
       <div id="form" onChange={handleChange.bind(props)}>
+        <label>Monthly Debt: $</label><input id="debt" type="text" placeholder="i.e.$123.45" defaultValue={props.data.debt ? props.data.debt : ""}></input>
+        <br></br>
         <label>Monthly Expenditure: $</label><input id="expenditure" type="text" placeholder="i.e.$123.45" defaultValue={props.data.expenditure ? props.data.expenditure : ""}></input>
         <br></br>
         <label>Monthly Payment: $</label><input id="payment" type="text" placeholder="i.e.$123.45" defaultValue={props.data.payment ? props.data.payment : ""}></input>

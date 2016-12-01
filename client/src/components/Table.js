@@ -5,7 +5,7 @@ const Table = (props) => {
   let theDebt = props.data.debt
   let i = 0
   while (theDebt > 0 && i < 100){
-    theDebt = theDebt - props.data.payment + props.data.expenditure - props.data.debt * props.data.interest / 100
+    theDebt = theDebt - props.data.payment + props.data.expenditure - props.data.debt * (props.data.interest / 12) / 100
     data.push(<tr>
       <td>Debt: </td><td>{theDebt}</td>
       <td>Payment: </td><td>{props.data.payment}</td>
