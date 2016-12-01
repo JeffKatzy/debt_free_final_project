@@ -12,7 +12,7 @@ class App extends Component {
       <div className="App">
         {this.props.children}
         <SignUp />
-        <Form setValue={this.props.setValue}/>
+        <Form data={this.props.data} setValue={this.props.setValue}/>
         <Table data={this.props.data}/>
       </div>
     );
@@ -20,7 +20,6 @@ class App extends Component {
 }
 
 function mapStateToProps(state){
-  // debugger
   return {data: state.period}
 }
 

@@ -9,6 +9,10 @@ label {
   display: inline-block;
 }
 
+select {
+  font-size: .75em;
+}
+
 #form {
-  
+  padding: 5%;
 }
