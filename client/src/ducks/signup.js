@@ -20,7 +20,7 @@ export function createUser(formData){
   }
 }
 
-export function signup(state = {finding_user: true, current_user: null}, action){
+export default(state = {finding_user: true, current_user: null}, action) => {
   switch (action.type) {
     case 'FINDING_USER':
       return {...state, finding_user: true}
@@ -31,3 +31,7 @@ export function signup(state = {finding_user: true, current_user: null}, action)
       return state
   }
 }
+
+
+export const findingUser = () => ({type: 'FINDING_USER'})
+export const loginUser = () => ({type: 'LOGIN_USER'})
