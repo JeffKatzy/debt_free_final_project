@@ -12,20 +12,20 @@ export function createPeriod(formData){
       data: formData,
       headers: {authorization: localStorage.getItem('token')}
     }).done((response) => { 
-      debugger
-      dispatch(persistPeriod(response))
-      console.log(response)
+      // debugger
+      // dispatch(persistPeriod(response))
+      // console.log(response)
       dispatch(setPeriod(response.period))
     })
   }
 }
 
-export default(state = {finding_period: false, period: ''}, action) => {
+export default(state = {finding_period: false}, action) => {
   switch (action.type) {
     case 'FINDING_PERIOD':
       return Object.assign({}, state, {finding_period: true})
-    case 'PERSIST_PERIOD':
-      return Object.assign({}, state, {finding_period: false, period: action.period})
+    // case 'PERSIST_PERIOD':
+    //   return Object.assign({}, state, {finding_period: false, period: action.period})
     default:
       return state
   }
@@ -33,4 +33,4 @@ export default(state = {finding_period: false, period: ''}, action) => {
 
 
 export const findingPeriod = () => ({type: 'FINDING_PERIOD'})
-export const persistPeriod = (response) => ({type: 'PERSIST_PERIOD', period: response.period})
+// export const persistPeriod = (response) => ({type: 'PERSIST_PERIOD', period: response.period})

@@ -12,7 +12,7 @@ export function createCard(formData){
       data: formData,
       headers: {authorization: localStorage.getItem('token')}
     }).done((response) => { 
-      dispatch(persistCard(response))
+      // dispatch(persistCard(response))
       dispatch(setCard(response.card))
     })
   }
@@ -22,8 +22,6 @@ export default(state = {finding_card: false, card: ''}, action) => {
   switch (action.type) {
     case 'FINDING_CARD':
       return Object.assign({}, state, {finding_card: true})
-    case 'PERSIST_CARD':
-      return Object.assign({}, state, {finding_card: false, card: action.card})
     default:
       return state
   }
@@ -31,4 +29,4 @@ export default(state = {finding_card: false, card: ''}, action) => {
 
 
 export const findingCard = () => ({type: 'FINDING_CARD'})
-export const persistCard = (response) => ({type: 'PERSIST_CARD', card: response.card})
+// export const persistCard = (response) => ({type: 'PERSIST_CARD', card: response.card})

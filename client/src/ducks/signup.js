@@ -15,18 +15,18 @@ export function createUser(formData){
     }).done((response) => {
       localStorage.setItem('token', response.jwt)
       dispatch(setCurrentUser(response.user))
-      dispatch(loginUser(response))
+      // dispatch(loginUser(response))
       // dispatch(setInitial())
     })
   }
 }
 
-export default(state = {finding_user: false, current_user: null}, action) => {
+export default(state = {finding_user: false}, action) => {
   switch (action.type) {
     case 'FINDING_USER':
       return Object.assign({}, state, {finding_user: true})
-    case 'LOGIN_CREATED_USER':
-      return Object.assign({}, state, {finding_user: false, current_user: action.current_user})
+    // case 'LOGIN_CREATED_USER':
+    //   return Object.assign({}, state, {finding_user: false, current_user: action.current_user})
     default:
       return state
   }
@@ -34,4 +34,4 @@ export default(state = {finding_user: false, current_user: null}, action) => {
 
 
 export const findingUser = () => ({type: 'FINDING_USER'})
-export const loginUser = (response) => ({type: 'LOGIN_CREATED_USER', current_user: response.user_id})
+// export const loginUser = (response) => ({type: 'LOGIN_CREATED_USER', current_user: response.user_id})
