@@ -14,7 +14,7 @@ export function createUser(formData){
       debugger
       localStorage.setItem('token', response.jwt)
       dispatch(loginUser(response))
-      dispatch(setInitial())
+      // dispatch(setInitial())
     })
   }
 }

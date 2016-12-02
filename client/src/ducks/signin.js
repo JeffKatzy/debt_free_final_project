@@ -1,5 +1,5 @@
 import $, { ajax } from 'jquery';
-import  {initialState, setInitial} from './period'
+import  {setValue} from './period'
 
 export function locateAndLoginUser(formData){
   return function(dispatch){
@@ -12,10 +12,16 @@ export function locateAndLoginUser(formData){
       datatype: 'json'
     }
     ).then((response) => {
-      // browserHistory.push('/newtask')
       localStorage.setItem('token', response.jwt)
       dispatch(setUser(response))
-      dispatch(setInitial())
+      const newValues = { debt: response.last_card.debt,
+                      month: response.last_period.month,
+                      year: response.last_period.year,
+                      creditcard: response.last_card.name,
+                      payment: response.last_period.payment,
+                      expenditure: response.last_period.expenditure,
+                      interest: response.last_card.interest_rate}
+      dispatch(setValue(newValues))
     })
   }
 }

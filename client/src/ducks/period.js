@@ -13,6 +13,7 @@ export default (state=initialState, action) => {
     case 'SET_STATE':
       return initialState
     case 'SET_VALUE':
+      debugger
       return Object.assign({}, state, action.payload)
     default:
       return {}

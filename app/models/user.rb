@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :creditcards
-  has_many :periods, through: :creditcards
+  has_many :credit_cards
+  has_many :periods, through: :credit_cards
   
   validates :email, presence: true
   validates :name, presence: true
