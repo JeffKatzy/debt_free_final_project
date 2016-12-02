@@ -12,7 +12,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
-store.dispatch(setInitial())
+// store.dispatch(setInitial())
 
 ReactDOM.render(
   <Provider store={store}>

@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import { browserHistory } from 'react-router'
 import {initialState, setInitial} from './period'
+import {setCurrentUser} from './current'
+
 export function createUser(formData){
   return function(dispatch){
     dispatch(findingUser())
@@ -11,20 +13,20 @@ export function createUser(formData){
       contentType:"application/json; charset=utf-8",
       datatype: 'json'
     }).done((response) => {
-      debugger
       localStorage.setItem('token', response.jwt)
-      dispatch(loginUser(response))
+      dispatch(setCurrentUser(response.user))
+      // dispatch(loginUser(response))
       // dispatch(setInitial())
     })
   }
 }
 
-export default(state = {finding_user: true, current_user: null}, action) => {
+export default(state = {finding_user: false}, action) => {
   switch (action.type) {
     case 'FINDING_USER':
       return Object.assign({}, state, {finding_user: true})
-    case 'LOGIN_CREATED_USER':
-      return Object.assign({}, state, {finding_user: false, current_user: action.current_user})
+    // case 'LOGIN_CREATED_USER':
+    //   return Object.assign({}, state, {finding_user: false, current_user: action.current_user})
     default:
       return state
   }
@@ -32,4 +34,4 @@ export default(state = {finding_user: true, current_user: null}, action) => {
 
 
 export const findingUser = () => ({type: 'FINDING_USER'})
-export const loginUser = (response) => ({type: 'LOGIN_CREATED_USER', current_user: response.user_id})
+// export const loginUser = (response) => ({type: 'LOGIN_CREATED_USER', current_user: response.user_id})
