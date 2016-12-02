@@ -35,6 +35,8 @@ class NewCard extends Component {
 
   render(){
     return(
+      <div> 
+      <h2>Add A Credit Card</h2>
       <form onSubmit={this.handleSubmit.bind(this)}> 
         <p><label>Card Name</label><input type="text" id="name" placeholder="My Visa" onChange={this.handleName.bind(this)}/></p> 
          <p><label>Total Debt</label><input type="number" id="debt" step=".01" onChange={this.handleDebt.bind(this)} /></p>
@@ -42,6 +44,7 @@ class NewCard extends Component {
         <p><label>Minimum Monthly Payment Percentage</label><input type="number" id="min_payment" step=".01" onChange={this.handleMinimum.bind(this)} />%</p>
         <p><input type="submit" name="submit" /></p>
       </form>
+      </div> 
       )
 
   }
