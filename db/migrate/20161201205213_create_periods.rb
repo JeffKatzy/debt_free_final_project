@@ -4,8 +4,8 @@ class CreatePeriods < ActiveRecord::Migration[5.0]
       t.integer :credit_card_id
       t.string :month
       t.integer :year
-      t.float :expenditure
-      t.float :payment
+      t.float :expenditure, :default => 0
+      t.float :payment, :default => 0
 
       t.timestamps
     end
