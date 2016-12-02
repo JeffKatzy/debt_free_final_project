@@ -19,7 +19,7 @@ export function createUser(formData){
   }
 }
 
-export default(state = {finding_user: true, current_user: null}, action) => {
+export default(state = {finding_user: false, current_user: null}, action) => {
   switch (action.type) {
     case 'FINDING_USER':
       return Object.assign({}, state, {finding_user: true})

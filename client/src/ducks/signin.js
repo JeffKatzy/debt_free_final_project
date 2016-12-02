@@ -13,6 +13,7 @@ export function locateAndLoginUser(formData){
     }
     ).then((response) => {
       localStorage.setItem('token', response.jwt)
+      localStorage.setItem('current_user_id', response.last_card.user_id)
       dispatch(setUser(response))
       const newValues = { debt: response.last_card.debt,
                       month: response.last_period.month,
@@ -35,7 +36,7 @@ function setUser(response){
 }
 
 
-export default(state = {creating_user: true, current_user: null}, action) => {
+export default(state = {creating_user: false, current_user: null}, action) => {
   switch (action.type) {
     case 'FIND_USER':
       return Object.assign({}, state, {creating_user: true})

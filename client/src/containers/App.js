@@ -4,6 +4,7 @@ import Form from '../components/Form.js'
 import Table from '../components/Table.js'
 import SignUp from '../components/users/SignUp.js'
 import SignIn from '../components/users/SignIn.js'
+import NewCard from '../components/NewCard'
 import { setValue } from '../ducks/period.js'
 import '../App.css';
 
@@ -14,8 +15,10 @@ class App extends Component {
         {this.props.children}
         <SignUp />
         <SignIn />
+        <NewCard />
         <Form data={this.props.data} setValue={this.props.setValue}/>
         <Table data={this.props.data}/>
+
       </div>
     );
   }
