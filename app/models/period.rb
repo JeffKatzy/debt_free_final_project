@@ -6,4 +6,4 @@ class Period < ApplicationRecord
   validates :expenditure, presence: true
   validates :payment, presence: true
 
-endz
+end
