@@ -14,7 +14,7 @@ class App extends Component {
         {this.props.children}
         <SignUp />
         <SignIn />
-        <Form setValue={this.props.setValue}/>
+        <Form data={this.props.data} setValue={this.props.setValue}/>
         <Table data={this.props.data}/>
       </div>
     );
