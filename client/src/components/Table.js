@@ -7,7 +7,7 @@ const Table = (props) => {
     parts = String(parts[0]).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
     return parts
   }
-
+  console.log()
   let months = ["January", "February", "March", "April", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
   let data = [<thead><tr>
     <th className="text-left">Year</th>
@@ -31,7 +31,7 @@ const Table = (props) => {
       <td className="text-left">${parseData(props.data.payment)}</td>
       <td className="text-left">${parseData(props.data.expenditure)}</td>
       <td className="text-left">${parseData(theDebt * (props.data.interest / 1200))}</td>
-      <td className="text-left">${parseData(theDebt - props.data.payment + props.data.expenditure + (theDebt * (props.data.interest / 1200)))}</td>
+      <td className="text-left">${parseData(theDebt - parseFloat(props.data.payment) + parseFloat(props.data.expenditure) + (theDebt * (props.data.interest / 1200)))}</td>
     </tr></tbody>)
     if (current_month + 1 > months.length - 1){
       current_month = 0
@@ -39,7 +39,7 @@ const Table = (props) => {
     } else {
       current_month += 1
     }
-    theDebt = theDebt - props.data.payment + props.data.expenditure + (theDebt * (props.data.interest / 1200))
+    theDebt = theDebt - parseFloat(props.data.payment) + parseFloat(props.data.expenditure) + (theDebt * (props.data.interest / 1200))
     i += 1
   }
   return (

@@ -6,7 +6,6 @@ import SignUp from '../components/users/SignUp.js'
 import SignIn from '../components/users/SignIn.js'
 import NewCard from '../components/NewCard'
 import NewPeriod from '../components/NewPeriod'
-
 import { setValue } from '../ducks/period.js'
 import '../App.css';
 
@@ -14,7 +13,8 @@ class App extends Component {
   render() {
     console.log(this)
     let contents
-    if (this.props.signin.current_user) {
+    
+    if (this.props.current.user !== "") {
       contents = <div><Form data={this.props} setValue={this.props.setValue}/><Table data={this.props.data}/></div>
     } else {
       contents = <div><SignIn /><Form data={this.props} setValue={this.props.setValue}/><Table data={this.props.data}/></div>
@@ -23,12 +23,10 @@ class App extends Component {
     return (
       <div className="App">
         {this.props.children}
-        <SignUp />
-        <SignIn />
+
         <NewCard />
         <NewPeriod />
-        <Form data={this.props.data} setValue={this.props.setValue}/>
-        <Table data={this.props.data}/>
+        {contents}
 
       </div>
     );
@@ -36,7 +34,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state){
-  return {data: state.period, signin: state.signin, signup: state.signup}
+  return {data: state.period, current: state.current}
 }
 
 function mapDispatchToProps(dispatch){

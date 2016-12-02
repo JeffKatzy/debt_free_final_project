@@ -1,9 +1,8 @@
 
 
-export default (state={user: {}, card: {}, period: {}}, action) => {
+export default (state={user: "", card: "", period: ""}, action) => {
   switch (action.type) {
     case 'SET_USER':
-      debugger
       return {...state, user: action.payload}
     case 'SET_CARD':
       return {...state, card: action.payload}
