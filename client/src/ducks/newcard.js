@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import { browserHistory } from 'react-router'
 // import {initialState, setInitial} from './period'
+import {setCard} from './current'
 
 export function createCard(formData){
   return function(dispatch){
@@ -12,7 +13,7 @@ export function createCard(formData){
       headers: {authorization: localStorage.getItem('token')}
     }).done((response) => { 
       dispatch(persistCard(response))
-      console.log(response)
+      dispatch(setCard(response.card))
     })
   }
 }

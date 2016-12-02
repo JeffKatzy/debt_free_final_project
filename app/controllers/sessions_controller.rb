@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     if user.authenticate(params[:auth][:password])
       jwt = Auth.issue({user_id: user.id})
       # byebug
-      render json: {jwt: jwt, user_id: user.id, last_period: user.periods.last, last_card: user.periods.last.credit_card}
+      render json: {jwt: jwt, user_id: user.id, user: user, last_period: user.periods.last, last_card: user.periods.last.credit_card}
     end
   end
   

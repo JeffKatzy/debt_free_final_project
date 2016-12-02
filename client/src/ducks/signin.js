@@ -1,5 +1,6 @@
 import $, { ajax } from 'jquery';
 import  {setValue} from './period'
+import {setCurrentUser} from './current'
 
 export function locateAndLoginUser(formData){
   return function(dispatch){
@@ -12,17 +13,19 @@ export function locateAndLoginUser(formData){
       datatype: 'json'
     }
     ).then((response) => {
+      // debugger
       localStorage.setItem('token', response.jwt)
       localStorage.setItem('current_user_id', response.last_card.user_id)
       dispatch(setUser(response))
-      const newValues = { debt: response.last_card.debt,
-                      month: response.last_period.month,
-                      year: response.last_period.year,
-                      creditcard: response.last_card.name,
-                      payment: response.last_period.payment,
-                      expenditure: response.last_period.expenditure,
-                      interest: response.last_card.interest_rate}
-      dispatch(setValue(newValues))
+      dispatch(setCurrentUser(response.user))
+      // const newValues = { debt: response.last_card.debt,
+      //                 month: response.last_period.month,
+      //                 year: response.last_period.year,
+      //                 creditcard: response.last_card.name,
+      //                 payment: response.last_period.payment,
+      //                 expenditure: response.last_period.expenditure,
+      //                 interest: response.last_card.interest_rate}
+      // dispatch(setValue(newValues))
     })
   }
 }

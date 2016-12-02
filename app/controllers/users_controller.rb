@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       jwt = Auth.issue({user_id: user.id})
-      render json: {jwt: jwt, user_id: user.id}
+      render json: {jwt: jwt, user_id: user.id, user: user}
       # @something = jwt
       # redirect_to users_path
     else

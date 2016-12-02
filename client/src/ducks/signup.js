@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import { browserHistory } from 'react-router'
 import {initialState, setInitial} from './period'
+import {setCurrentUser} from './current'
+
 export function createUser(formData){
   return function(dispatch){
     dispatch(findingUser())
@@ -11,8 +13,8 @@ export function createUser(formData){
       contentType:"application/json; charset=utf-8",
       datatype: 'json'
     }).done((response) => {
-      debugger
       localStorage.setItem('token', response.jwt)
+      dispatch(setCurrentUser(response.user))
       dispatch(loginUser(response))
       // dispatch(setInitial())
     })
