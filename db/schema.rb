@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20161201205213) do
     t.integer  "user_id"
     t.float    "debt"
     t.float    "interest_rate"
+    t.float    "min_payment"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
@@ -28,10 +29,10 @@ ActiveRecord::Schema.define(version: 20161201205213) do
     t.integer  "credit_card_id"
     t.string   "month"
     t.integer  "year"
-    t.float    "expenditure"
-    t.float    "payment"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.float    "expenditure",    default: 0.0
+    t.float    "payment",        default: 0.0
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "users", force: :cascade do |t|

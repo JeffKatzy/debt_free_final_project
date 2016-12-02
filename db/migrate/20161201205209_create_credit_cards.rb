@@ -5,7 +5,8 @@ class CreateCreditCards < ActiveRecord::Migration[5.0]
       t.integer :user_id
       t.float :debt
       t.float :interest_rate
-
+      t.float :min_payment
+      
       t.timestamps
     end
   end
