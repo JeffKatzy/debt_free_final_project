@@ -27,13 +27,13 @@ class SignIn extends Component {
   render(){
 
     return(
-      <div>
+      <div className="six columns">
         <form onSubmit={this.handleSubmit.bind(this)}>
-            <h2> Sign In</h2>
-            <label> Email </label>
-            <input type="text" placeholder="your email" onChange={this.handleOnEmailChange.bind(this)}/>
-            <label> Password </label>
-            <input type="password" placeholder="your password" onChange={this.handleOnPasswordChange.bind(this)} />
+            <h2> Sign In </h2>
+            <p><label id="userLabel"> Email </label>
+            <input type="text" placeholder="your email" onChange={this.handleOnEmailChange.bind(this)}/></p>
+            <p><label id="userLabel"> Password </label>
+            <input type="password" placeholder="your password" onChange={this.handleOnPasswordChange.bind(this)} /></p>
             <input type="submit" />
         </form>
       </div>

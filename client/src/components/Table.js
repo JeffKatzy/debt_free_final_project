@@ -10,13 +10,13 @@ const Table = (props) => {
   console.log()
   let months = ["January", "February", "March", "April", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
   let data = [<thead><tr>
-    <th className="text-left">Year</th>
-    <th className="text-left">Month</th>
-    <th className="text-left">Debt</th>
-    <th className="text-left">Payment</th>
-    <th className="text-left">Expenditure</th>
-    <th className="text-left">Interest Payment</th>
-    <th className="text-left">New Balance</th>
+    <th className="text-center">Year</th>
+    <th className="text-center">Month</th>
+    <th className="text-center">Debt</th>
+    <th className="text-center">Payment</th>
+    <th className="text-center">Expenditure</th>
+    <th className="text-center">Interest Payment</th>
+    <th className="text-center">New Balance</th>
   </tr></thead>]
   let theDebt = props.data.debt
   let current_month = months.indexOf(props.data.month)
@@ -45,7 +45,7 @@ const Table = (props) => {
   return (
     <div>
       <h3 className="table-title">Data Table</h3>
-      <table className="table-fill">
+      <table id="the_table" className="table-fill">
         {data}
       </table>
     </div>

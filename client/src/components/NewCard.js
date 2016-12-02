@@ -35,14 +35,14 @@ class NewCard extends Component {
 
   render(){
     return(
-      <div> 
+      <div className="six columns"> 
       <h2>Add A Credit Card</h2>
       <form onSubmit={this.handleSubmit.bind(this)}> 
-        <p><label>Card Name</label><input type="text" id="name" placeholder="My Visa" onChange={this.handleName.bind(this)}/></p> 
-         <p><label>Total Debt</label><input type="number" id="debt" step=".01" onChange={this.handleDebt.bind(this)} /></p>
-         <p><label>Interest Rate</label><input type="number" id="interest_rate" step=".01" onChange={this.handleInterest.bind(this)} />%</p>
-        <p><label>Minimum Monthly Payment Percentage</label><input type="number" id="min_payment" step=".01" onChange={this.handleMinimum.bind(this)} />%</p>
-        <p><input type="submit" name="submit" /></p>
+         <p><label id="userLabel">Card Name</label><input type="text" id="name" placeholder="My Visa" onChange={this.handleName.bind(this)}/></p> 
+         <p><label id="userLabel">Total Debt</label><input type="number" id="debt" step=".01" onChange={this.handleDebt.bind(this)} /></p>
+         <p><label id="userLabel">Interest Rate</label><input type="number" id="interest_rate" step=".01" onChange={this.handleInterest.bind(this)} />%</p>
+         <p><label id="userLabel">Min Monthly Payment</label><input type="number" id="min_payment" step=".01" onChange={this.handleMinimum.bind(this)} />%</p>
+         <p><input type="submit" name="submit" /></p>
       </form>
       </div> 
       )

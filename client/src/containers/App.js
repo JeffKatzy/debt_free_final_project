@@ -15,17 +15,14 @@ class App extends Component {
     let contents
     
     if (this.props.current.user !== "") {
-      contents = <div><Form data={this.props} setValue={this.props.setValue}/><Table data={this.props.data}/></div>
+      contents = <div> <div className="container"> <NewCard /> <NewPeriod /></div><Form data={this.props} setValue={this.props.setValue}/><Table data={this.props.data}/></div>
     } else {
-      contents = <div><SignIn /><Form data={this.props} setValue={this.props.setValue}/><Table data={this.props.data}/></div>
+      contents = <div><div className="container"><SignIn /><SignUp /></div> <div className="container"> <NewCard /> <NewPeriod /></div><Form data={this.props} setValue={this.props.setValue}/><Table data={this.props.data}/></div>
     }
 
     return (
       <div className="App">
         {this.props.children}
-
-        <NewCard />
-        <NewPeriod />
         {contents}
 
       </div>

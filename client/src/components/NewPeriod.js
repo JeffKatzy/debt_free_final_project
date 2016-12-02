@@ -35,13 +35,13 @@ class NewPeriod extends Component {
 
   render(){
     return(
-      <div> 
+      <div className="six columns"> 
       <h2>Add A Payment Period</h2>
       <form onSubmit={this.handleSubmit.bind(this)}> 
-        <p><label>Month</label><input type="text" id="month" placeholder="December" onChange={this.handleMonth.bind(this)}/></p> 
-         <p><label>Year</label><input type="number" id="year" placeholder="2016" step=".01" onChange={this.handleYear.bind(this)} /></p>
-         <p><label>Monthly Expenditures</label><input type="number" id="expenditure" step=".01" onChange={this.handleExpenditure.bind(this)} /></p>
-        <p><label>Planned Monthly Payment</label><input type="number" id="payment" step=".01" onChange={this.handlePayment.bind(this)} /></p>
+        <p><label id="userLabel">Month</label><input type="text" id="month" placeholder="December" onChange={this.handleMonth.bind(this)}/></p> 
+         <p><label id="userLabel">Year</label><input type="number" id="year" placeholder="2016" step=".01" onChange={this.handleYear.bind(this)} /></p>
+         <p><label id="userLabel">Monthly Expenditures</label><input type="number" id="expenditure" step=".01" onChange={this.handleExpenditure.bind(this)} /></p>
+        <p><label id="userLabel">Planned Monthly Payment</label><input type="number" id="payment" step=".01" onChange={this.handlePayment.bind(this)} /></p>
         <p><input type="submit" month="submit" /></p>
       </form>
       </div>

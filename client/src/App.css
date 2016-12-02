@@ -9,12 +9,16 @@ label {
   display: inline-block;
 }
 
+p { 
+  margin:0 
+}
+
 select {
   font-size: .75em;
 }
 
-#form {
-  padding: 5%;
+#tableform {
+  text-align:center;
 }
 
 #userAccess {
@@ -28,5 +32,6 @@ select {
 
 #userLabel {
   font-size: 1.25em;
-  padding: 0px 1vw;
+  padding-right: 5px;
+  text-align: left;
 }

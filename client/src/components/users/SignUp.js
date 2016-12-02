@@ -32,15 +32,15 @@ class Signup extends Component {
   render(){
 
     return(
-      <div>
+      <div className="six columns">
         <form id="userAccess" onSubmit={this.handleSubmit.bind(this)}>
-            <span className="two columns" id="signtitle">Signup</span>
-            <label id="userLabel"> Name </label>
-            <input type="text" placeholder="Your Name" onChange={this.handleOnNameChange.bind(this)}/>
-            <label id="userLabel"> Email </label>
-            <input type="text" placeholder="email@email.com" onChange={this.handleOnEmailChange.bind(this)}/>
-            <label id="userLabel"> Password </label>
-            <input type="password" placeholder="your password" onChange={this.handleOnPasswordChange.bind(this)} />
+            <h2>Sign Up</h2>
+            <p><label id="userLabel"> Name </label>
+            <input type="text" placeholder="Your Name" onChange={this.handleOnNameChange.bind(this)}/></p>
+            <p><label id="userLabel"> Email </label>
+            <input type="text" placeholder="email@email.com" onChange={this.handleOnEmailChange.bind(this)}/></p>
+            <p><label id="userLabel"> Password </label>
+            <input type="password" placeholder="your password" onChange={this.handleOnPasswordChange.bind(this)} /></p>
             <input type="submit" />
         </form>
       </div>
