@@ -7,8 +7,10 @@ import thunk from 'redux-thunk'
 import rootReducer from './ducks'
 import App from './containers/App.js';
 import './index.css';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 store.dispatch(setInitial())
 

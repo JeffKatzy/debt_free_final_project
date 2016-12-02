@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   debt: 1500,
   month: "November",
   year: 2016,

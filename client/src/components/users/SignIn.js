@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
-import { findUser } from '../../ducks/signin';
+import { locateAndLoginUser } from '../../ducks/signin';
 import { connect } from 'react-redux'
 
 class SignIn extends Component {
   constructor(props){
     super(props)
-    this.state = {email: '', password: ''}
+    // this.state = {email: '', password: ''}
   }
 
-  handleOnEmailChange(event){
-    this.setState({email: event.target.value})
-  }
+  // handleOnEmailChange(event){
+  //   this.setState({email: event.target.value})
+  // }
 
-  handleOnPasswordChange(event){
-    this.setState({password: event.target.value})
-  }
+  // handleOnPasswordChange(event){
+  //   this.setState({password: event.target.value})
+  // }
 
   handleSubmit(event){ 
     event.preventDefault()
-    this.props.findUser(this.state)
+    var email = event.target.children[1].children[1].value
+    var password = event.target.children[2].children[1].value
+    this.props.locateAndLoginUser({email, password})
   }
 
   render(){
@@ -29,11 +31,11 @@ class SignIn extends Component {
             <h2> Sign In</h2>
             <p>
             <label> Email </label>
-            <input type="text" placeholder="your email" onChange={this.handleOnEmailChange.bind(this)}/>
+            <input type="text" placeholder="your email"/>
             </p>
             <p>
             <label> Password </label>
-            <input type="password" placeholder="your password" onChange={this.handleOnPasswordChange.bind(this)} />
+            <input type="password" placeholder="your password" />
             </p>
             <p> <input type="submit" /> </p>
         </form>
@@ -42,4 +44,4 @@ class SignIn extends Component {
   }
 }
 
-export default connect(null, { findUser })(SignIn)
+export default connect(null, { locateAndLoginUser })(SignIn)

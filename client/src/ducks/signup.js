@@ -1,9 +1,9 @@
 import $ from 'jquery';
 import { browserHistory } from 'react-router'
-
+import {initialState, setInitial} from './period'
 export function createUser(formData){
   return function(dispatch){
-    dispatch({type: 'FINDING_USER'})
+    dispatch(findingUser())
     $.ajax({
       url: 'http://localhost:3000/users',
       type: 'POST',
@@ -11,11 +11,10 @@ export function createUser(formData){
       contentType:"application/json; charset=utf-8",
       datatype: 'json'
     }).done((response) => {
-      // browserHistory.push('/newtask')
       debugger
       localStorage.setItem('token', response.jwt)
-      dispatch({type: 'LOGIN_USER', current_user: response.userId})
-
+      dispatch(loginUser(response))
+      dispatch(setInitial())
     })
   }
 }
@@ -23,10 +22,9 @@ export function createUser(formData){
 export default(state = {finding_user: true, current_user: null}, action) => {
   switch (action.type) {
     case 'FINDING_USER':
-      return {...state, finding_user: true}
-      break;
-    case 'LOGIN_USER':
-      return {...state, finding_user: false, current_user: action.current_user}
+      return Object.assign({}, state, {finding_user: true})
+    case 'LOGIN_CREATED_USER':
+      return Object.assign({}, state, {finding_user: false, current_user: action.current_user})
     default:
       return state
   }
@@ -34,4 +32,4 @@ export default(state = {finding_user: true, current_user: null}, action) => {
 
 
 export const findingUser = () => ({type: 'FINDING_USER'})
-export const loginUser = () => ({type: 'LOGIN_USER'})
+export const loginUser = (response) => ({type: 'LOGIN_CREATED_USER', current_user: response.user_id})
