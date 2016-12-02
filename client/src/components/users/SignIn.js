@@ -16,12 +16,12 @@ class SignIn extends Component {
     this.setState({password: event.target.value})
   }
 
-  handleSubmit(event){ 
+  handleSubmit(event){
     event.preventDefault()
     // var email = event.target.children[1].children[1].value
     // var password = event.target.children[2].children[1].value
     // this.props.locateAndLoginUser({email, password})
-    this.props.locateAndLoginUser(this.state)    
+    this.props.locateAndLoginUser(this.state)
   }
 
   render(){
@@ -30,13 +30,11 @@ class SignIn extends Component {
       <div>
         <form onSubmit={this.handleSubmit.bind(this)}>
             <h2> Sign In</h2>
-            <p>
             <label> Email </label>
-            <input type="text" placeholder="your email" onChange={this.handleOnEmailChange.bind(this)}/>               </p>
-            <p>
+            <input type="text" placeholder="your email" onChange={this.handleOnEmailChange.bind(this)}/>
             <label> Password </label>
-            <input type="password" placeholder="your password" onChange={this.handleOnPasswordChange.bind(this)} />            </p>
-            <p> <input type="submit" /> </p>
+            <input type="password" placeholder="your password" onChange={this.handleOnPasswordChange.bind(this)} />
+            <input type="submit" />
         </form>
       </div>
     )

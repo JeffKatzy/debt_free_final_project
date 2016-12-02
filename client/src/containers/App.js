@@ -9,20 +9,25 @@ import '../App.css';
 
 class App extends Component {
   render() {
+    console.log(this)
+    let contents
+    if (this.props.signin.current_user) {
+      contents = <div><Form data={this.props} setValue={this.props.setValue}/><Table data={this.props.data}/></div>
+    } else {
+      contents = <div><SignIn /><Form data={this.props} setValue={this.props.setValue}/><Table data={this.props.data}/></div>
+    }
+
     return (
       <div className="App">
         {this.props.children}
-        <SignUp />
-        <SignIn />
-        <Form data={this.props.data} setValue={this.props.setValue}/>
-        <Table data={this.props.data}/>
+        {contents}
       </div>
     );
   }
 }
 
 function mapStateToProps(state){
-  return {data: state.period}
+  return {data: state.period, signin: state.signin, signup: state.signup}
 }
 
 function mapDispatchToProps(dispatch){

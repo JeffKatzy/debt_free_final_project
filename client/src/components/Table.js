@@ -1,16 +1,45 @@
 const React = require('react')
 
 const Table = (props) => {
-  let data = []
+
+  function parseData(data){
+    var parts= String(+parseFloat(data).toFixed(2)).split(".")
+    parts = String(parts[0]).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
+    return parts
+  }
+
+  let months = ["January", "February", "March", "April", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  let data = [<thead><tr>
+    <th className="text-left">Year</th>
+    <th className="text-left">Month</th>
+    <th className="text-left">Debt</th>
+    <th className="text-left">Payment</th>
+    <th className="text-left">Expenditure</th>
+    <th className="text-left">Interest Payment</th>
+    <th className="text-left">New Balance</th>
+  </tr></thead>]
   let theDebt = props.data.debt
+  let current_month = months.indexOf(props.data.month)
+  let current_year = props.data.year
   let i = 0
-  while (theDebt > 0 && i < 100){
-    theDebt = theDebt - props.data.payment + props.data.expenditure - props.data.debt * (props.data.interest / 12) / 100
-    data.push(<tr>
-      <td className="text-left">Debt: </td><td>{theDebt}</td>
-      <td className="text-left">Payment: </td><td>{props.data.payment}</td>
-      <td className="text-left">Expenditures: </td><td>{props.data.expenditure}</td>
-    </tr>)
+  while (theDebt > 0 && i < 250){
+    data.push(
+    <tbody className="table-hover"><tr>
+      <td className="text-left">{current_year}</td>
+      <td className="text-left">{months[current_month]}</td>
+      <td className="text-left">${parseData(theDebt)}</td>
+      <td className="text-left">${parseData(props.data.payment)}</td>
+      <td className="text-left">${parseData(props.data.expenditure)}</td>
+      <td className="text-left">${parseData(theDebt * (props.data.interest / 1200))}</td>
+      <td className="text-left">${parseData(theDebt - props.data.payment + props.data.expenditure + (theDebt * (props.data.interest / 1200)))}</td>
+    </tr></tbody>)
+    if (current_month + 1 > months.length - 1){
+      current_month = 0
+      current_year += 1
+    } else {
+      current_month += 1
+    }
+    theDebt = theDebt - props.data.payment + props.data.expenditure + (theDebt * (props.data.interest / 1200))
     i += 1
   }
   return (

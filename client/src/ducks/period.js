@@ -1,17 +1,7 @@
-export const initialState = {
-  debt: 1500,
-  month: "November",
-  year: 2016,
-  creditcard: "Chase Debit Card",
-  payment: 450,
-  expenditure: 375,
-  interest: 12
-}
-
-export default (state=initialState, action) => {
+export default (state={}, action) => {
   switch (action.type) {
     case 'SET_STATE':
-      return initialState
+      return {current_user: null}
     case 'SET_VALUE':
       return Object.assign({}, state, action.payload)
     default:
