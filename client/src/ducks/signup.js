@@ -21,10 +21,10 @@ export function createUser(formData){
   }
 }
 
-export default(state = {finding_user: false}, action) => {
+export default(state = {creating_user: false}, action) => {
   switch (action.type) {
     case 'FINDING_USER':
-      return Object.assign({}, state, {finding_user: true})
+      return Object.assign({}, state, {creating_user: true})
     // case 'LOGIN_CREATED_USER':
     //   return Object.assign({}, state, {finding_user: false, current_user: action.current_user})
     default:

@@ -17,9 +17,23 @@ class App extends Component {
     let contents
 
     if (this.props.current.user !== "") {
-      contents = <div> <div className="container"><SignOut/><NewCard/><NewPeriod/><PeriodList/></div><Form data={this.props} setValue={this.props.setValue}/><Table data={this.props.data}/></div>
+      contents = (<div> 
+        <div className="container">
+          <SignOut/>
+          <NewCard/>
+          <NewPeriod/>
+          <PeriodList/>
+          </div>
+          <Form data={this.props} setValue={this.props.setValue}/>
+          <Table data={this.props.data}/>
+        </div>)
     } else {
-      contents = <div><div className="container"><SignIn/><SignUp/></div><div className="container"> <NewCard/> <NewPeriod/><PeriodList/></div><Form data={this.props} setValue={this.props.setValue}/><Table data={this.props.data}/></div>
+      contents = (<div>
+        <div className="container"><SignIn/><SignUp/></div>
+        <div className="container"> <NewCard/> <NewPeriod/><PeriodList/></div>
+        <Form data={this.props} setValue={this.props.setValue}/>
+        <Table data={this.props.data}/>
+      </div>)
     }
 
     return (
