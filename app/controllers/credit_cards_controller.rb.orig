@@ -11,6 +11,7 @@ class CreditCardsController < ApplicationController
 
   def show
     card = CreditCard.find(params[:id])
+<<<<<<< HEAD:app/controllers/credit_cards_controller.rb
     render json: card
   end 
 
@@ -20,9 +21,14 @@ class CreditCardsController < ApplicationController
   end 
 
   def update
+=======
+>>>>>>> 065720a7dd927ee24456bf813314e5d367dd75db:app/controllers/credit_card_controller.rb
   end
 
-  def destroy
-  end
+  # def update
+  # end
+  #
+  # def destroy
+  # end
 
 end

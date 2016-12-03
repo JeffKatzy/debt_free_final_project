@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
+<<<<<<< HEAD
+  skip_before_action :authenticate_user
+  # , only: [:new, :create]
+  
+=======
   skip_before_action :authenticate_user, only: [:new, :create]
 
+>>>>>>> 065720a7dd927ee24456bf813314e5d367dd75db
   def show
     user = User.find(params[:id])
     jwt = Auth.issue({user_id: user.id})
@@ -11,21 +17,28 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       jwt = Auth.issue({user_id: user.id})
+<<<<<<< HEAD
       render json: {jwt: jwt, user: user}
       # render json: {jwt: jwt, user_id: user.id, user: user}
       # @something = jwt
       # redirect_to users_path
+=======
+      render json: {jwt: jwt, user_id: user.id, user: user}
+>>>>>>> 065720a7dd927ee24456bf813314e5d367dd75db
     else
       render json: {error: 'user not unique'}
     end
   end
 
+<<<<<<< HEAD
   def index
     users = User.all
     render json: users
 
   end 
 
+=======
+>>>>>>> 065720a7dd927ee24456bf813314e5d367dd75db
   def user_params
     params.require(:auth).permit(:name, :email, :password)
   end

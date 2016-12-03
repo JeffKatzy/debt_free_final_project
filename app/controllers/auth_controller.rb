@@ -1,9 +1,5 @@
 class AuthController < ApplicationController
   def authenticate
-    
-    # You'll need to implement the below method. It should return the
-    # user instance if the username and password are valid.
-    # Otherwise return nil.
     user = User.find_by_credentials(params[:email], params[:password])
     if user
       render json: authentication_payload(user)
@@ -18,7 +14,7 @@ class AuthController < ApplicationController
     return nil unless user && user.id
     {git
       auth_token: AuthToken.encode({ user_id: id }),
-      user: { id: user.id, email: user.email } # return whatever user info you need
+      user: { id: user.id, email: user.email }
     }
   end
 end

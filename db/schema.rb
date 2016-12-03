@@ -27,8 +27,10 @@ ActiveRecord::Schema.define(version: 20161201205213) do
 
   create_table "periods", force: :cascade do |t|
     t.integer  "credit_card_id"
-    t.string   "month"
-    t.integer  "year"
+    t.string   "start_month"
+    t.integer  "start_year"
+    t.string   "end_month"
+    t.integer  "end_year"
     t.float    "expenditure",    default: 0.0
     t.float    "payment",        default: 0.0
     t.datetime "created_at",                   null: false
