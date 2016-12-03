@@ -9,6 +9,7 @@ import NewCard from '../components/NewCard'
 import NewPeriod from '../components/NewPeriod'
 import PeriodList from '../components/PeriodList'
 import { setValue } from '../ducks/tableData'
+
 import '../App.css';
 
 class App extends Component {
@@ -17,22 +18,35 @@ class App extends Component {
     let contents
 
     if (this.props.current.user !== "") {
-      contents = (<div> 
+      contents = (
+      <div>
         <div className="container">
           <SignOut/>
           <NewCard/>
           <NewPeriod/>
           <PeriodList/>
-          </div>
+        </div>
+        <div>
           <Form data={this.props} setValue={this.props.setValue}/>
           <Table data={this.props.data}/>
-        </div>)
+        </div>
+      </div>)
     } else {
-      contents = (<div>
-        <div className="container"><SignIn/><SignUp/></div>
-        <div className="container"> <NewCard/> <NewPeriod/><PeriodList/></div>
+      contents = (
+      <div>
+        <div className="container">
+          <SignIn/>
+          <SignUp/>
+        </div>
+        <div className="container">
+          <NewCard/>
+          <NewPeriod/>
+          <PeriodList/>
+        </div>
+        <div>
         <Form data={this.props} setValue={this.props.setValue}/>
         <Table data={this.props.data}/>
+        </div>
       </div>)
     }
 
@@ -40,7 +54,6 @@ class App extends Component {
       <div className="App">
         {this.props.children}
         {contents}
-
       </div>
     );
   }
