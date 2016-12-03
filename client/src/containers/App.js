@@ -7,6 +7,7 @@ import SignIn from '../components/users/SignIn.js'
 import SignOut from '../components/users/SignOut.js'
 import NewCard from '../components/NewCard'
 import NewPeriod from '../components/NewPeriod'
+import PeriodList from '../components/PeriodList'
 import { setValue } from '../ducks/tableData'
 import '../App.css';
 
