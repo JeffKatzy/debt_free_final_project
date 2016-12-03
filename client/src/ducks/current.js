@@ -5,6 +5,7 @@ export default (state={user: "", card: "", period: ""}, action) => {
     case 'SET_USER':
       return {...state, user: action.payload}
     case 'SET_CARD':
+      debugger
       return {...state, card: action.payload}
     case 'SET_PERIOD':
       return {...state, period: action.payload}

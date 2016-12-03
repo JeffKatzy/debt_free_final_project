@@ -7,7 +7,7 @@ export function createCard(formData){
   return function(dispatch){
     dispatch(findingCard())
     $.ajax({
-      url: 'http://localhost:3000/credit_card',
+      url: 'http://localhost:3000/credit_cards',
       type: 'POST',
       data: formData,
       headers: {authorization: localStorage.getItem('token')}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import {createCard} from '../ducks/newcard'
+// import {fetchCard} from '../ducks/fetchCard'
 
 class NewCard extends Component {
   constructor(props){
