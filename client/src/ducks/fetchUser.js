@@ -15,7 +15,7 @@ export function fetchUser(id){
       headers: {authorization: localStorage.getItem('token')}
     }).done((response) => { 
       // dispatch(persistCard(response))
-      dispatch(loginUser())
+      dispatch(loginUser( ))
       dispatch(setCurrentUser(response))
       let recentCard = response.credit_cards[response.credit_cards.length-1]
       dispatch(setCard(recentCard))

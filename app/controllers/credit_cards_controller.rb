@@ -1,7 +1,9 @@
 class CreditCardsController < ApplicationController
   skip_before_action :authenticate_user
+  
   def create
     card = CreditCard.new(name: params[:name], debt: params[:debt], interest_rate: params[:interest_rate], user_id: params[:user_id], min_payment: params[:min_payment])
+    byebug
     if card.save
       render json: {card: card}
     else

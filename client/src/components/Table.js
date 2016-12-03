@@ -44,7 +44,6 @@ const Table = (props) => {
   }
   return (
     <div>
-      <h3 className="table-title">Data Table</h3>
       <table id="the_table" className="table-fill">
         {data}
       </table>

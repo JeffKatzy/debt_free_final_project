@@ -3,3 +3,4 @@ class UserSerializer < ActiveModel::Serializer
   has_many :credit_cards
   has_many :periods, through: :credit_cards
 end
+
