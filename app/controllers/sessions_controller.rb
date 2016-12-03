@@ -8,5 +8,4 @@ class SessionsController < ApplicationController
       render json: {jwt: jwt, user_id: user.id, user: user, last_period: user.periods.last, last_card: user.periods.last.credit_card}
     end
   end
-
 end

@@ -1,8 +1,10 @@
 class Period < ApplicationRecord
   belongs_to :credit_card
-  validates :credit_card_id, uniqueness: {scope: [:month, :year]}
-  validates :month, presence: true
-  validates :year, presence: true
+  validates :credit_card_id, presence: true
+  validates :start_month, presence: true
+  validates :start_year, presence: true
+  validates :end_month, presence: true
+  validates :end_year, presence: true
   validates :expenditure, presence: true
   validates :payment, presence: true
   after_initialize :defaults, unless: :persisted?
