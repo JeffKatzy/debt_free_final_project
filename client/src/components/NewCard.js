@@ -29,6 +29,8 @@ class NewCard extends Component {
   }
 
   handleSubmit(event){
+    let months = ["January", "February", "March", "April", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    let date = new Date()
     event.preventDefault()
     // var email = event.target.children[1].children[1].value
     // var password = event.target.children[2].children[1].value
@@ -36,15 +38,13 @@ class NewCard extends Component {
     this.props.setCard(this.state)
     let payment = (this.state.min_payment * this.state.debt) / 1200
     this.props.setPeriod({payment: payment, expenditure: 0})
-    const newValues = {debt: recentCard.debt,
-                    month: recentPeriod.start_month,
-                    year: recentPeriod.start_year,
-                    end_month: recentPeriod.end_month,
-                    end_year: recentPeriod.end_year,
-                    creditcard: recentCard.name,
-                    payment: recentPeriod.payment,
-                    expenditure: recentPeriod.expenditure,
-                    interest: recentCard.interest_rate}
+    const newValues = {debt: this.state.debt,
+                    month: months[date.getMonth()],
+                    year: date.getYear()+1900,
+                    creditcard: this.state.name,
+                    payment: payment,
+                    expenditure: 0,
+                    interest: this.state.interest_rate}
     this.props.setValue(newValues)
 
   }

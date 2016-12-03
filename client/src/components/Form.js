@@ -7,11 +7,10 @@ const Form = (props) => {
     result[id] = val
     props.setValue(result)
   }
+  // debugger
   return (
     <div className="container" id="tableform" >
-      {props.data.current.card !== "" ? <select><option>{props.current.card}</option></select>: <p></p>}
-
-      <select><option>{props.data.month+", "+props.data.year}</option></select>
+      {props.data.current.card !== "" ? <select><option>{props.data.current.card}</option></select>: <p></p>}
       <h2>Financial Data</h2>
       <div onChange={handleChange.bind(props)}>
         <label id="userLabel">Monthly Expenditure: $</label><input step=".01" id="expenditure" type="number" placeholder="i.e.$123.45" defaultValue={props.data.expenditure ? props.data.expenditure : ""}></input>
