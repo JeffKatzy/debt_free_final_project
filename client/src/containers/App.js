@@ -5,9 +5,9 @@ import Table from '../components/Table.js'
 import SignUp from '../components/users/SignUp.js'
 import SignIn from '../components/users/SignIn.js'
 import SignOut from '../components/users/SignOut.js'
-import NewCard from '../components/NewCard'
-import NewPeriod from '../components/NewPeriod'
-import PeriodList from '../components/NewPeriod'
+import NewCard from '../components/NewCard.js'
+import NewPeriod from '../components/NewPeriod.js'
+import PeriodList from '../components/PeriodList.js'
 import { setValue } from '../ducks/period.js'
 import '../App.css';
 
@@ -17,9 +17,9 @@ class App extends Component {
     let contents
 
     if (this.props.current.user !== "") {
-      contents = <div> <div className="container"><SignOut/><NewCard/><NewPeriod/><PeriodList/></div><Form data={this.props} setValue={this.props.setValue}/><Table data={this.props.data}/></div>
+      contents = <div><div className="container"><SignOut /><NewCard /><NewPeriod /></div><Form data={this.props} setValue={this.props.setValue}/><Table data={this.props.data}/></div>
     } else {
-      contents = <div><div className="container"><SignIn/><SignUp/></div><div className="container"> <NewCard/> <NewPeriod/><PeriodList/></div><Form data={this.props} setValue={this.props.setValue}/><Table data={this.props.data}/></div>
+      contents = <div><div className="container"><SignIn /><SignUp /></div><div className="container"><NewCard /><NewPeriod /></div><Form data={this.props} setValue={this.props.setValue}/><Table data={this.props.data}/></div>
     }
 
     return (
