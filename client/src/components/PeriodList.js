@@ -2,7 +2,8 @@ import React from 'react'
 
 const PeriodList = (props) => {
   return(
-    <div>
+    <div className="six columns">
+      <h2>Payment Periods</h2>
       <ul>
         <li>Start Month</li>
         <li>Start Year</li>
