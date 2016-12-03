@@ -3,7 +3,7 @@ import $ from 'jquery';
 // import {initialState, setInitial} from './period'
 import {setCurrentUser, setCard, setPeriod} from './current'
 import {findUser} from './signin'
-
+import {setValue} from './tableData'
 export function fetchUser(id){
   // debugger
   return function(dispatch){
@@ -21,8 +21,16 @@ export function fetchUser(id){
       let recentCardPeriods = response.periods.filter(per=>{
         return per.credit_card_id === recentCard.id
       })
-      dispatch(setPeriod(recentCardPeriods[recentCardPeriods.length-1]))
-
+      let recentPeriod = recentCardPeriods[recentCardPeriods.length-1]
+      dispatch(setPeriod(recentPeriod))
+      const newValues = {debt: recentCard.debt,
+                      month: recentCard.month,
+                      year: recentPeriod.year,
+                      creditcard: recentCard.name,
+                      payment: recentPeriod.payment,
+                      expenditure: recentPeriod.expenditure,
+                      interest: recentCard.interest_rate}
+      dispatch(setValue(newValues))     
     })
   }
 }

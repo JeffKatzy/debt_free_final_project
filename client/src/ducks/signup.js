@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import { browserHistory } from 'react-router'
-import {initialState, setInitial} from './period'
+import {initialState, setInitial} from './tableData'
 import {setCurrentUser} from './current'
 
 export function createUser(formData){

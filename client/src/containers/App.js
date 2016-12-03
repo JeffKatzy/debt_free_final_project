@@ -6,7 +6,7 @@ import SignUp from '../components/users/SignUp.js'
 import SignIn from '../components/users/SignIn.js'
 import NewCard from '../components/NewCard'
 import NewPeriod from '../components/NewPeriod'
-import { setValue } from '../ducks/period.js'
+import { setValue } from '../ducks/tableData'
 import '../App.css';
 
 class App extends Component {
@@ -31,7 +31,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state){
-  return {data: state.period, current: state.current}
+  return {data: state.tableData, current: state.current}
 }
 
 function mapDispatchToProps(dispatch){

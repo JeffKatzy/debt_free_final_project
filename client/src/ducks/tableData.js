@@ -11,3 +11,4 @@ export default (state={}, action) => {
 
 export const setInitial = () => ({type: 'SET_STATE'})
 export const setValue = (obj) => ({type: 'SET_VALUE', payload: obj})
+      
