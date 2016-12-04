@@ -32,7 +32,7 @@ class Signup extends Component {
   render(){
 
     return(
-      <div className="six columns">
+      <div className="four columns">
         <form id="userAccess" onSubmit={this.handleSubmit.bind(this)}>
             <h2>Sign Up</h2>
             <p><label id="userLabel"> Name </label>

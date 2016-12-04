@@ -49,14 +49,14 @@ class NewCard extends Component {
     }
   }
   setSubmit(button){
-    
+
     this.submitName = button.target.value
   }
 
   render(){
     return(
       <div className="six columns">
-      <h2>Add A Credit Card (To the Local Store For Now)</h2>
+      <h2>Add A Credit Card</h2>
       <form onSubmit={this.handleSubmit.bind(this)} >
          <p><label id="userLabel">Card Name</label><input type="text" id="card_name" placeholder="My Visa" onChange={this.handleName.bind(this)}/></p>
          <p><label id="userLabel">Total Debt</label><input type="number" id="debt" step=".01" onChange={this.handleDebt.bind(this)} /></p>

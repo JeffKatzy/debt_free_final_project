@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import Navbar from '../containers/Navbar.js'
+
 import Form from '../components/Form.js'
-import Table from '../components/Table.js'
+import Table from './Table.js'
 import SignUp from '../components/users/SignUp.js'
 import SignIn from '../components/users/SignIn.js'
 import SignOut from '../components/users/SignOut.js'
@@ -10,20 +12,19 @@ import NewPeriod from '../components/NewPeriod'
 import PeriodList from '../components/PeriodList'
 import { setValue } from '../ducks/tableData'
 
-import '../App.css';
+import '../../public/css/App.css';
 
 class App extends Component {
   render() {
-    console.log(this)
     let contents
 
     if (this.props.current.user !== "") {
       contents = (
       <div>
         <div className="container">
+          <Navbar userAccess={this.props.userAccess} />
           <SignOut/>
           <NewCard/>
-          <NewPeriod/>
           <PeriodList/>
         </div>
         <div>
@@ -35,17 +36,13 @@ class App extends Component {
       contents = (
       <div>
         <div className="container">
-          <SignIn/>
-          <SignUp/>
-        </div>
-        <div className="container">
+          <Navbar userAccess={this.props.userAccess} />
           <NewCard/>
-          <NewPeriod/>
-          <PeriodList/>
         </div>
         <div>
-        <Form data={this.props} setValue={this.props.setValue}/>
-        <Table data={this.props.data}/>
+          <PeriodList/>
+          <Form data={this.props} setValue={this.props.setValue}/>
+          <Table data={this.props.data}/>
         </div>
       </div>)
     }
@@ -60,7 +57,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state){
-  return {data: state.tableData, current: state.current}
+  return {data: state.tableData, current: state.current, userAccess: state.userAccess}
 }
 
 function mapDispatchToProps(dispatch){

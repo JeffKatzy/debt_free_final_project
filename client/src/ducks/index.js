@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import userAccess from './userAccess.js'
 import tableData from './tableData.js'
 import overpayment from './overpayment.js'
 import signup from './signup.js'
@@ -8,6 +9,7 @@ import newPeriod from './newperiod.js'
 import current from './current.js'
 
 const rootReducer = combineReducers({
+  userAccess,
   tableData,
   overpayment,
   signup,

@@ -1,0 +1,17 @@
+#navbar {
+  background-color: black;
+}
+
+#navbar button {
+  color: white;
+  background-color: grey;
+  width: 15%;
+  position: relative;
+  top:50%;
+  left:35%;
+
+}
+
+#navbar button:hover {
+  background-color: silver;
+}
