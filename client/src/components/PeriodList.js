@@ -12,8 +12,8 @@ export default class PeriodList extends React.Component {
   }
 
   showChildren(event){
-    // 
-    if (this.state.calledChild !== event.target.innerHTML && this.state.calledChild !== "") 
+    //
+    if (this.state.calledChild !== event.target.innerHTML && this.state.calledChild !== "")
       { this.setState({calledChild: event.target.innerHTML}) }
     else if (this.state.calledChild === event.target.innerHTML){
       this.setState({showChildren: !this.state.showChildren, calledChild: ""})
@@ -32,7 +32,7 @@ export default class PeriodList extends React.Component {
     let period = this.props.data.user.periods.filter(item=>{return item.name === event.target.id})
     this.props.setPeriod(period)
   }
-    // else 
+    // else
       // this.props.setPeriod
   }
   render(){
