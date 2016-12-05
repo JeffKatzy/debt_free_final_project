@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Navbar from '../containers/Navbar.js'
-
 import Form from '../components/Form.js'
 import Table from './Table.js'
 import NewCard from '../components/NewCard'
@@ -21,7 +20,9 @@ class App extends Component {
         </div>
         <div className="container">
           {/* <PeriodList/> */}
-          <Form data={this.props} setValue={this.props.setValue} setCard={this.props.setCard} />
+          {!this.props.current.user.credit_cards && <NewCard current={this.props.current}/>}
+          {this.props.current.user.credit_cards && <Form data={this.props} setValue={this.props.setValue} setCard={this.props.setCard} />}
+          {this.props.userAccess.addPeriod && <NewPeriod />}
           <Table data={this.props.data}/>
         </div>
       </div>)

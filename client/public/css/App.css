@@ -25,6 +25,14 @@ select {
   text-align:center;
 }
 
+#newperiodform {
+  text-align:center;
+}
+
+#newcreditcardform {
+  text-align: center;
+}
+
 #userAccess {
   text-align: left;
 }

@@ -13,10 +13,8 @@ export default (state={}, action) => {
 
 // export const setInitial = () => ({type: 'SET_STATE'})
 export const setValue = (obj) => {
-  // debugger
   if (moment(Object.values(obj)[0], "YYYY-DD-MM", true).isValid()) {
     let date = new Date(Object.values(obj)[0])
-    // debugger
     obj = {start_month: date.getMonth(), start_year: date.getFullYear()}
   }
   for (let val in obj) {obj[val] = parseFloat(obj[val])}
