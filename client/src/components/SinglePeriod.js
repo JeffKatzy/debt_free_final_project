@@ -9,7 +9,6 @@ class SinglePeriod extends Component {
   }
   deleteThing(event){
     this.props.deletePeriodFromRails(event.target.id)
-    debugger
   }
 
 
