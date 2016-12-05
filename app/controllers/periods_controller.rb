@@ -11,11 +11,18 @@ class PeriodsController < ApplicationController
     end
   end
 
-  # def update
-  # end
-  #
-  # def destroy
-  # end
+  def update
+    period = Period.find(params[:id])
+    period.update(period_params)
+    render json: {period: period}
+  end
+  
+  def destroy
+    period = Period.find(params[:id])
+    sendName = period.name
+    period.delete 
+    render json: {name: sendName}
+  end
 
   def period_params
     params.require(:period).permit(:name, :start_month, :start_year, :end_month, :end_year, :expenditure, :payment, :credit_card_id)

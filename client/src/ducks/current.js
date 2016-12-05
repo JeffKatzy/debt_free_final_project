@@ -1,3 +1,4 @@
+import $ from 'jquery';
 
 
 export default (state={user: "", card: "", periods: []}, action) => {
@@ -11,10 +12,9 @@ export default (state={user: "", card: "", periods: []}, action) => {
     case 'ADD_PERIOD_TO_USER':
       return{...state, user: {...state.user, periods: [...state.user.periods, action.payload]} }
     case 'REMOVE_PERIOD_FROM_CURRENT':
-      // debugger
       var periods = state.periods.filter(item=>{ if (item.name !== action.payload)
       {return item}})
-      // let periods = state.periods[0].filter(item=>{if (item.name !== action.payload){ return item}})
+      debugger
       return {...state, periods}
     case 'SET_PERIOD':
       return {...state, periods: [...state.periods, ...action.payload]}
@@ -22,6 +22,25 @@ export default (state={user: "", card: "", periods: []}, action) => {
       return state
   }
 }
+
+export function deletePeriodFromRails(input){
+  return function(dispatch){
+    $.ajax({
+      url: `http://localhost:3000/periods/` + input,
+      type: 'DELETE',
+      data: input, 
+      contentType:"application/json; charset=utf-8",
+      datatype: 'json',
+      headers: {authorization: localStorage.getItem('token')}
+    }).done((response) => {
+      debugger
+      dispatch(removePeriodFromCurrent(response))
+    })
+  }
+
+}
+
+
 export function removePeriodFromCurrent(input){
   return {type: 'REMOVE_PERIOD_FROM_CURRENT', payload: input}
 }
@@ -41,7 +60,6 @@ export function setCurrentUser(input){
 
 
 export function setCard(input){
-  // debugger
   return {type: 'SET_CARD', payload: input}
 }
 
