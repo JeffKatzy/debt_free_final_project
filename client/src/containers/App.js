@@ -8,6 +8,7 @@ import NewCard from '../components/NewCard'
 import NewPeriod from '../components/NewPeriod'
 import PeriodList from '../components/PeriodList'
 import { setValue } from '../ducks/tableData'
+import {setCard} from '../ducks/current'
 
 import '../../public/css/App.css';
 
@@ -20,7 +21,7 @@ class App extends Component {
         </div>
         <div className="container">
           {/* <PeriodList/> */}
-          <Form data={this.props} setValue={this.props.setValue}/>
+          <Form data={this.props} setValue={this.props.setValue} setCard={this.props.setCard} />
           <Table data={this.props.data}/>
         </div>
       </div>)
@@ -41,6 +42,9 @@ function mapDispatchToProps(dispatch){
   return {
     setValue: (obj) => {
       dispatch(setValue(obj))
+    },
+    setCard: (obj) => {
+      dispatch(setCard(obj))
     }
   }
 }
