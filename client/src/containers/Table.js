@@ -40,6 +40,10 @@ class Table extends React.Component {
         payment = inPeriod.payment
         expenditure = inPeriod.expenditure
       }
+      else {
+        payment = this.props.data.payment
+        expenditure = this.props.data.expenditure
+      }
       future_data.push(
       <tr key={i}>
         <td key={0} className="text-left">{current_year}</td>
