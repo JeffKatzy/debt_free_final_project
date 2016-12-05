@@ -16,6 +16,16 @@ p {
 select {
   font-size: .75em;
 }
+.middleList{
+  list-style-type: none;
+  list-style-position: inside;
+  margin: 0px;
+  padding: 0px;
+}
+
+.clickable:hover {
+  text-decoration: underline;
+}
 
 .container {
   width: 100%;
@@ -27,6 +37,11 @@ select {
 
 #newperiodform {
   text-align:center;
+}
+
+.periodList {
+  display:block;
+  text-align: center;
 }
 
 #newcreditcardform {

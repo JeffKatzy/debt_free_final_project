@@ -11,13 +11,11 @@ export class SinglePeriod extends Component {
     return (
                <div id={this.props.item.name}>{  
                 this.props.showChildren && (this.props.calledChild === this.props.item.name) ? 
-                  <ul>
-                    <li>{this.props.item.start_month}</li>
-                    <li>{this.props.item.start_year}</li>
-                    <li>{this.props.item.end_month}</li>
-                    <li>{this.props.item.end_year}</li>
-                    <li>{this.props.item.payment}</li>   
-                    <li>{this.props.item.expenditure}</li>
+                  <ul className="middleList">
+                    <li>Start Date: {this.props.item.start_month} {this.props.item.start_year}</li>
+                    <li>End Date: {this.props.item.end_month} {this.props.item.end_year}</li>
+                    <li>Payment: ${this.props.item.payment}</li>   
+                    <li>Expenditure: ${this.props.item.expenditure}</li>
                   </ul>  : null }</div>
             )
     }

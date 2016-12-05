@@ -7,7 +7,7 @@ import NewCard from '../components/NewCard'
 import NewPeriod from '../components/NewPeriod'
 import PeriodList from '../components/PeriodList'
 import { setValue } from '../ducks/tableData'
-import {setCard} from '../ducks/current'
+import {setCard, setPeriod, removePeriodFromCurrent} from '../ducks/current'
 
 import '../../public/css/App.css';
 
@@ -18,8 +18,8 @@ class App extends Component {
         <div className="container">
           <Navbar userAccess={this.props.userAccess} current={this.props.current} />
         </div>
-        <div>
-                  <PeriodList data={this.props.current} />
+        <div className="container">
+          <PeriodList data={this.props.current} removePeriodFromCurrent={this.props.removePeriodFromCurrent} setPeriod={this.props.setPeriod} />
         </div>  
         <div className="container">
           {!this.props.current.user.credit_cards && <NewCard current={this.props.current}/>}
@@ -48,6 +48,12 @@ function mapDispatchToProps(dispatch){
     },
     setCard: (obj) => {
       dispatch(setCard(obj))
+    },
+    removePeriodFromCurrent: (obj) => {
+      dispatch(removePeriodFromCurrent(obj))
+    },
+    setPeriod: (obj) =>{
+      dispatch(setPeriod(obj))
     }
   }
 }

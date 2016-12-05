@@ -23,7 +23,7 @@ export function fetchUser(id){
         return per.credit_card_id === recentCard.id
       })
       let recentPeriod = recentCardPeriods[recentCardPeriods.length-1]
-      dispatch(setPeriod(recentPeriod))
+      dispatch(setPeriod(recentCardPeriods))
       const newValues = {debt: recentCard.debt,
                       start_month: recentPeriod.start_month,
                       start_year: recentPeriod.start_year,

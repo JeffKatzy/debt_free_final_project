@@ -1,6 +1,6 @@
 
 
-export default (state={user: "", card: "", period: ""}, action) => {
+export default (state={user: "", card: "", periods: []}, action) => {
   switch (action.type) {
     case 'SET_USER':
       return {...state, user: action.payload}
@@ -10,11 +10,20 @@ export default (state={user: "", card: "", period: ""}, action) => {
       return {...state, card: action.payload}
     case 'ADD_PERIOD_TO_USER':
       return{...state, user: {...state.user, periods: [...state.user.periods, action.payload]} }
+    case 'REMOVE_PERIOD_FROM_CURRENT':
+      // debugger
+      var periods = state.periods.filter(item=>{ if (item.name !== action.payload)
+      {return item}})
+      // let periods = state.periods[0].filter(item=>{if (item.name !== action.payload){ return item}})
+      return {...state, periods}
     case 'SET_PERIOD':
-      return {...state, period: action.payload}
+      return {...state, periods: [...state.periods, ...action.payload]}
     default:
       return state
   }
+}
+export function removePeriodFromCurrent(input){
+  return {type: 'REMOVE_PERIOD_FROM_CURRENT', payload: input}
 }
 
 export function addNewCardtoUser(input){
