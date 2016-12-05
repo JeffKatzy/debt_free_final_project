@@ -1,5 +1,5 @@
 import React from 'react'
-import {SinglePeriod} from './SinglePeriod'
+import SinglePeriod from './SinglePeriod'
 import {removePeriodFromCurrent, setPeriod} from '../ducks/current'
 import {connect} from 'react-redux'
 // import {setPeriod} from '../ducks/current'
@@ -25,8 +25,7 @@ export default class PeriodList extends React.Component {
   editPeriod(event){
     let thing = this.props.data.periods.filter(item=>{ if (item.name === event.target.id)
       {return item}})
-    // debugger
-    if (thing.length >= 1)
+  if (thing.length >= 1)
       {this.props.removePeriodFromCurrent(event.target.id)}
   else {
     let period = this.props.data.user.periods.filter(item=>{return item.name === event.target.id})
@@ -68,6 +67,7 @@ export default class PeriodList extends React.Component {
     </div>
   )}
 }
+
 // export default connect(null, { setPeriod })(PeriodList)
 
 

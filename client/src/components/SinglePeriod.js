@@ -1,9 +1,14 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
+import { deletePeriodFromRails } from '../ducks/current'
 
-export class SinglePeriod extends Component {
+class SinglePeriod extends Component {
 
   constructor(props){
     super(props)
+  }
+  deleteThing(event){
+    this.props.deletePeriodFromRails(event.target.id)
   }
 
 
@@ -16,8 +21,15 @@ export class SinglePeriod extends Component {
                     <li>End Date: {this.props.item.end_month} {this.props.item.end_year}</li>
                     <li>Payment: ${this.props.item.payment}</li>   
                     <li>Expenditure: ${this.props.item.expenditure}</li>
-                  </ul>  : null }</div>
+                    <input type="button" id={this.props.item.id} onClick={this.deleteThing.bind(this)} value="delete me" />
+                  </ul>  : <p></p> }</div>
             )
     }
     
 }
+
+const connector = connect(null, {deletePeriodFromRails})
+const connectedComponent = connector(SinglePeriod)
+
+export default connectedComponent
+
