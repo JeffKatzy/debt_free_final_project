@@ -4,9 +4,6 @@ import Navbar from '../containers/Navbar.js'
 
 import Form from '../components/Form.js'
 import Table from './Table.js'
-import SignUp from '../components/users/SignUp.js'
-import SignIn from '../components/users/SignIn.js'
-import SignOut from '../components/users/SignOut.js'
 import NewCard from '../components/NewCard'
 import NewPeriod from '../components/NewPeriod'
 import PeriodList from '../components/PeriodList'
@@ -16,37 +13,17 @@ import '../../public/css/App.css';
 
 class App extends Component {
   render() {
-    let contents
-
-    if (this.props.current.user !== "") {
-      contents = (
+    let contents = (
       <div>
         <div className="container">
-          <Navbar userAccess={this.props.userAccess} />
-          <SignOut/>
-          <NewCard/>
-          <PeriodList/>
+          <Navbar userAccess={this.props.userAccess} current={this.props.current} />
         </div>
-        <div>
+        <div className="container">
+          {/* <PeriodList/> */}
           <Form data={this.props} setValue={this.props.setValue}/>
           <Table data={this.props.data}/>
         </div>
       </div>)
-    } else {
-      contents = (
-      <div>
-        <div className="container">
-          <Navbar userAccess={this.props.userAccess} />
-          <NewCard/>
-        </div>
-        <div>
-          <PeriodList/>
-          <Form data={this.props} setValue={this.props.setValue}/>
-          <Table data={this.props.data}/>
-        </div>
-      </div>)
-    }
-
     return (
       <div className="App">
         {this.props.children}

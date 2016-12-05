@@ -15,8 +15,11 @@ const Form = (props) => {
       {props.data.current.card !== "" ? <select><option>{props.data.current.card.name}</option></select> : <p></p>}
       <h2>Financial Data</h2>
       <div onChange={handleChange.bind(props)}>
-        <label id="userLabel">Monthly Expenditure: $</label><input step=".01" id="expenditure" type="number" placeholder="i.e.$123.45" defaultValue={props.data.expenditure ? props.data.expenditure : ""}></input>
-        <label id="userLabel">Monthly Payment: $</label><input id="payment" step=".01" type="number" placeholder="i.e.$123.45" defaultValue={props.data.payment ? props.data.payment : ""}></input>
+        <label id="userLabel">Debt: $</label><input id="debt" type="number" placeholder="i.e.$123.45" defaultValue={props.data.expenditure ? props.data.expenditure : ""}></input>
+        <label id="userLabel">Interest Rate: $</label><input id="interest" type="number" placeholder="i.e.$123.45" defaultValue={props.data.expenditure ? props.data.expenditure : ""}></input>
+        <br />
+        <label id="userLabel">Monthly Expenditure: $</label><input id="expenditure" type="number" placeholder="i.e.$123.45" defaultValue={props.data.expenditure ? props.data.expenditure : ""}></input>
+        <label id="userLabel">Monthly Payment: $</label><input id="payment" type="number" placeholder="i.e.$123.45" defaultValue={props.data.payment ? props.data.payment : ""}></input>
         <br /><label id="userLabel">Period Start Date: </label><input id="start_date" type="date" />
         <label id="userLabel">Period End Date: </label><input id="end_date" type="date" />
       </div>

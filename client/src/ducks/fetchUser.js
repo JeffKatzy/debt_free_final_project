@@ -13,7 +13,7 @@ export function fetchUser(id){
       type: 'GET',
       data: id,
       headers: {authorization: localStorage.getItem('token')}
-    }).done((response) => { 
+    }).done((response) => {
       // dispatch(persistCard(response))
       dispatch(loginUser( ))
       dispatch(setCurrentUser(response))
@@ -33,7 +33,8 @@ export function fetchUser(id){
                       payment: recentPeriod.payment,
                       expenditure: recentPeriod.expenditure,
                       interest: recentCard.interest_rate}
-      dispatch(setValue(newValues))     
+      debugger
+      dispatch(setValue(newValues))
     })
   }
 }

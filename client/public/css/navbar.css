@@ -1,15 +1,18 @@
 #navbar {
   background-color: black;
+  width: 100%;
+}
+
+#title {
+  color: grey;
+  font-size: 2em;
+  padding: 0% 2%;
 }
 
 #navbar button {
   color: white;
   background-color: grey;
-  width: 15%;
-  position: relative;
-  top:50%;
-  left:35%;
-
+  width: 200px;
 }
 
 #navbar button:hover {

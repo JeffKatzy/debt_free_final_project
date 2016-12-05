@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export default (state={}, action) => {
   switch (action.type) {
     // case 'SET_STATE':
@@ -10,4 +12,15 @@ export default (state={}, action) => {
 }
 
 // export const setInitial = () => ({type: 'SET_STATE'})
-export const setValue = (obj) => ({type: 'SET_VALUE', payload: obj})
+export const setValue = (obj) => {
+  // debugger
+  if (moment(Object.values(obj)[0], "YYYY-DD-MM", true).isValid()) {
+    let date = new Date(Object.values(obj)[0])
+    // debugger
+    obj = {month: date.getMonth(), year: date.getFullYear()}
+  }
+  for (let val in obj) {obj[val] = parseFloat(obj[val])}
+  return (
+    {type: 'SET_VALUE', payload: obj}
+  )
+}

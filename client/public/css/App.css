@@ -17,6 +17,10 @@ select {
   font-size: .75em;
 }
 
+.container {
+  width: 100%;
+}
+
 #tableform {
   text-align:center;
 }
