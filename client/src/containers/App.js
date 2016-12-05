@@ -18,11 +18,13 @@ class App extends Component {
         <div className="container">
           <Navbar userAccess={this.props.userAccess} current={this.props.current} />
         </div>
+        <div>
+                  <PeriodList data={this.props.current} />
+        </div>  
         <div className="container">
-          {/* <PeriodList/> */}
           {!this.props.current.user.credit_cards && <NewCard current={this.props.current}/>}
           {this.props.current.user.credit_cards && <Form data={this.props} setValue={this.props.setValue} setCard={this.props.setCard} />}
-          {this.props.userAccess.addPeriod && <NewPeriod />}
+          {this.props.userAccess.addPeriod && <NewPeriod card={this.props.current.card.id} />}
           <Table data={this.props.data}/>
         </div>
       </div>)

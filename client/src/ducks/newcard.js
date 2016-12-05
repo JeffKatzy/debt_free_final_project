@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import { browserHistory } from 'react-router'
 // import {initialState, setInitial} from './period'
-import {setCard} from './current'
+import {setCard, addNewCardtoUser} from './current'
 
 export function createCard(formData){
   return function(dispatch){
@@ -9,16 +9,17 @@ export function createCard(formData){
     $.ajax({
       url: 'http://localhost:3000/credit_cards',
       type: 'POST',
-      data: formData,
+      data: {card: formData},
       headers: {authorization: localStorage.getItem('token')}
     }).done((response) => { 
       // dispatch(persistCard(response))
       dispatch(setCard(response.card))
+      dispatch(addNewCardtoUser(response.card))
     })
   }
 }
 
-export default(state = {finding_card: false, card: ''}, action) => {
+export default(state = {finding_card: false}, action) => {
   switch (action.type) {
     case 'FINDING_CARD':
       return Object.assign({}, state, {finding_card: true})

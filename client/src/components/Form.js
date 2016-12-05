@@ -9,7 +9,7 @@ const Form = (props) => {
     // debugger
     let val = event.target.value ? event.target.value : 0
     result[id] = val
-    // debugger
+   // debugger
     props.setValue(result)
   }
   const handleCard = (event) => {

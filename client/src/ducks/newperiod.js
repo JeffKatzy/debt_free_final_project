@@ -4,12 +4,13 @@ import {setPeriod} from './current'
 // import {initialState, setInitial} from './period'
 
 export function createPeriod(formData){
+  
   return function(dispatch){
     dispatch(findingPeriod())
     $.ajax({
       url: 'http://localhost:3000/periods',
       type: 'POST',
-      data: formData,
+      data: {period: formData},
       headers: {authorization: localStorage.getItem('token')}
     }).done((response) => { 
       // debugger

@@ -5,25 +5,24 @@ import {createPeriod} from '../ducks/newperiod'
 class NewPeriod extends Component {
   constructor(props){
     super(props)
-    this.state = {start_month: '', start_year: '', end_month: '', end_year: '', expenditure:'', payment: '', credit_card_id: 1}
+    this.state = {start_month: '', start_year: '', end_month: '', end_year: '', expenditure:'', payment: '', credit_card_id: this.props.card}
+    // debugger
     // use mapStateToProps to find the Current Credit Card, which we haven't established yet
   }
 
-  handleStartMonth(event){
-    this.setState({start_month: event.target.value})
+  handleStartDate(event){
+    // debugger
+    let array_date = event.target.value.split('-')
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    this.setState({start_year: array_date[0], start_month: months[array_date[1]-1]})
   }
 
-  handleStartYear(event){
-    this.setState({start_year: event.target.value})
+  handleEndDate(event){
+    let array_date = event.target.value.split('-')
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    this.setState({end_year: array_date[0], end_month: months[array_date[1]-1]})
   }
 
-  handleEndMonth(event){
-    this.setState({end_month: event.target.value})
-  }
-
-  handleEndYear(event){
-    this.setState({end_year: event.target.value})
-  }
 
   handleExpenditure(event){
     this.setState({expenditure: event.target.value})
@@ -43,12 +42,10 @@ class NewPeriod extends Component {
       <div className="twelve columns" id="newperiodform">
       <h2>Add A Period</h2>
       <form onSubmit={this.handleSubmit.bind(this)}>
-        <p><label id="userLabel">Start Month</label><input type="text" id="start_month" placeholder="December" onChange={this.handleStartMonth.bind(this)}/>
-        <label id="userLabel">Start Year</label><input type="number" id="start_year" placeholder="2016" step="number" onChange={this.handleStartYear.bind(this)} /></p>
-        <p><label id="userLabel">End Month</label><input type="text" id="end_month" placeholder="December" onChange={this.handleEndMonth.bind(this)}/>
-        <label id="userLabel">End Year</label><input type="number" id="end_year" placeholder="2016" step="number" onChange={this.handleEndYear.bind(this)} /></p>
-        <p><label id="userLabel">Monthly Expenditure</label><input type="number" id="expenditure" step="100" onChange={this.handleExpenditure.bind(this)} />
-        <label id="userLabel">Monthly Payment</label><input type="number" id="payment" step="100" onChange={this.handlePayment.bind(this)} /></p>
+        <p><label id="userLabel">Start Date</label><input type="month" id="period[start_date]" placeholder="December" onChange={this.handleStartDate.bind(this)}/></p>
+        <p><label id="userLabel">End Date</label><input type="month" id="period[end_date]" placeholder="January" onChange={this.handleEndDate.bind(this)}/></p>
+        <p><label id="userLabel">Monthly Expenditure</label><input type="number" id="period[expenditure]" step="100" onChange={this.handleExpenditure.bind(this)} />
+        <label id="userLabel">Monthly Payment</label><input type="number" id="period[payment]" step="100" onChange={this.handlePayment.bind(this)} /></p>
         <p><input type="submit"/></p>
       </form>
       </div>
