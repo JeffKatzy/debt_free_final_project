@@ -8,6 +8,8 @@ export default (state={user: "", card: "", period: ""}, action) => {
       return{...state, user: {...state.user, credit_cards: [...state.user.credit_cards, action.payload]} }
     case 'SET_CARD':
       return {...state, card: action.payload}
+    case 'ADD_PERIOD_TO_USER':
+      return{...state, user: {...state.user, periods: [...state.user.periods, action.payload]} }
     case 'SET_PERIOD':
       return {...state, period: action.payload}
     default:
@@ -18,6 +20,11 @@ export default (state={user: "", card: "", period: ""}, action) => {
 export function addNewCardtoUser(input){
   return {type: 'ADD_CARD_TO_USER', payload: input}
 }
+
+export function addPeriodToUser(input){
+  return {type: 'ADD_PERIOD_TO_USER', payload: input}
+}
+
 
 export function setCurrentUser(input){
   return {type: 'SET_USER', payload: input}

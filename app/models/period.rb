@@ -7,6 +7,7 @@ class Period < ApplicationRecord
   validates :end_year, presence: true
   validates :expenditure, presence: true
   validates :payment, presence: true
+  validates :name, presence: true
   # after_initialize :defaults, unless: :persisted?
 
   # def defaults

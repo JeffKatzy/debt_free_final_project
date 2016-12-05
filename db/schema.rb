@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20161201205213) do
     t.integer  "end_year"
     t.float    "expenditure",    default: 0.0
     t.float    "payment",        default: 0.0
+    t.string   "name"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end

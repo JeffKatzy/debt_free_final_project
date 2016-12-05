@@ -18,6 +18,6 @@ class PeriodsController < ApplicationController
   # end
 
   def period_params
-    params.require(:period).permit(:start_month, :start_year, :end_month, :end_year, :expenditure, :payment, :credit_card_id)
+    params.require(:period).permit(:name, :start_month, :start_year, :end_month, :end_year, :expenditure, :payment, :credit_card_id)
   end
 end

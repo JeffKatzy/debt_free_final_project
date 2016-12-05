@@ -1,7 +1,7 @@
 export default (state={}, action) => {
   switch (action.type) {
     case 'SET_INITIAL':
-      return {showSignIn: false, showSignUp: false, addCreditCard: false, addPeriod: false}
+      return {showSignIn: false, showSignUp: false, addCreditCard: false, addPeriod: false, showPeriodList: false}
     case 'SIGN_IN':
       return Object.assign({}, state, {showSignIn: !state.showSignIn})
     case 'SIGN_UP':

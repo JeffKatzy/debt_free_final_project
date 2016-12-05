@@ -10,28 +10,32 @@ function parseData(data){
 
 class Table extends React.Component {
   render() {
+    //make sure month names 
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     let future_data = []
     let theDebt = this.props.data.debt
     let current_month = this.props.data.start_month
     let current_year = this.props.data.start_year
     let i = 0
+
     while (theDebt > 0 && i < 200){
+      // debugger
       future_data.push(
       <tr key={i}>
         <td key={0} className="text-left">{current_year}</td>
-        <td key={1} className="text-left">{months[current_month]}</td>
+        <td key={1} className="text-left">{current_month}</td>
         <td key={2} className="text-left">${parseData(theDebt)}</td>
         <td key={3} className="text-left">${parseData(this.props.data.payment)}</td>
         <td key={4} className="text-left">${parseData(this.props.data.expenditure)}</td>
         <td key={5} className="text-left">${parseData(theDebt * (this.props.data.interest / 1200))}</td>
         <td key={6} className="text-left">${parseData(theDebt - this.props.data.payment + this.props.data.expenditure + (theDebt * (this.props.data.interest / 1200)))}</td>
       </tr>)
-      if (current_month + 1 > months.length - 1){
-        current_month = 0
+      if (months.indexOf(current_month) + 1 > months.length - 1){
+        current_month = "January"
         current_year += 1
       } else {
-        current_month += 1
+        // debugger
+        current_month = months[months.indexOf(current_month) + 1]
       }
       theDebt = theDebt - this.props.data.payment + this.props.data.expenditure + (theDebt * (this.props.data.interest / 1200))
       i += 1

@@ -8,7 +8,7 @@ class CreatePeriods < ActiveRecord::Migration[5.0]
       t.integer :end_year
       t.float :expenditure, :default => 0
       t.float :payment, :default => 0
-
+      t.string :name 
       t.timestamps
     end
   end
