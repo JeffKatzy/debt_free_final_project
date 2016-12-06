@@ -5,14 +5,16 @@ import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'rec
 const Chart = (props) => {
   return(
     <div>
-      <LineChart width={730} height={250} data={props.data}
+      <LineChart width={800} height={500} data={props.data}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
         <XAxis dataKey="month" />
-        <YAxis/>
-        <CartesianGrid strokeDasharray="3 3" />
+        <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="payment" stroke="#8884d8" />
+        <Line type="monotone" dataKey="payment" stroke="black"/>
+        <Line type="monotone" dataKey="expenditure" stroke="red"/>
+        <Line type="monotone" dataKey="interest" stroke="green"/>
+        <Line type="monotone" dataKey="balance" stroke="blue"/>
     </LineChart>
     </div>
   )

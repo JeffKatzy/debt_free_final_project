@@ -49,7 +49,6 @@ class Table extends React.Component {
         expenditure = this.props.data.expenditure
         period = "Default"
       }
-      payment_array.push({month:i, payment:parseData(payment)})
       total_interest += (theDebt * (this.props.data.interest / 1200))
       future_data.push(
       <tr key={i}>
@@ -71,6 +70,7 @@ class Table extends React.Component {
       }
       theDebt = theDebt - payment + expenditure + (theDebt * (this.props.data.interest / 1200))
       i += 1
+      payment_array.push({month:i, payment: parseFloat(parseData(payment)), expenditure: parseFloat(parseData(expenditure)), interest: parseFloat(parseData(theDebt * (this.props.data.interest / 1200))), balance: parseFloat(parseData(theDebt - payment + expenditure + (theDebt * (this.props.data.interest / 1200))))})
     }
     return (
       <div>
