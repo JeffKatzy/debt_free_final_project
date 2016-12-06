@@ -10,6 +10,8 @@ export default (state={}, action) => {
       return Object.assign({}, state, {showNewCard: true})
     case 'ADD_PERIOD':
       return Object.assign({}, state, {addPeriod: true})
+    case 'SHOW_PERIODS':
+      return Object.assign({}, state, {showPeriodList: true})
     case 'ALL_FALSE':
       return Object.assign({}, state, {showSignIn: false, showSignUp: false, showNewCard: false, addPeriod: false, showPeriodList: false})
     default:
@@ -22,4 +24,5 @@ export const signIn = () => ({type: 'SIGN_IN'})
 export const signUp = () => ({type: 'SIGN_UP'})
 export const showNewCard = () => ({type: 'SHOW_NEW_CARD'})
 export const addPeriod = () => ({type: 'ADD_PERIOD'})
+export const showPeriods = () => ({type: 'SHOW_PERIODS'})
 export const allFalse = () => ({type: 'ALL_FALSE'})
