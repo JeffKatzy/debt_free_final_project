@@ -4,7 +4,7 @@ import SignUp from '../components/users/SignUp.js'
 import SignIn from '../components/users/SignIn.js'
 import NewCard from '../components/NewCard.js'
 import SignOut from '../components/users/SignOut.js'
-import { signIn, signUp,showNewCard,addPeriod,allFalse } from '../ducks/userAccess.js'
+import { signIn, signUp,showNewCard,addPeriod,showPeriods,allFalse } from '../ducks/userAccess.js'
 import '../../public/css/navbar.css'
 
 function handleTabs(event){
@@ -21,6 +21,9 @@ function handleTabs(event){
   }
   else if (event.target.innerText === "ADD A PERIOD") {
     this.props.addPeriod()
+  }
+  else if (event.target.innerText === "VIEW PERIODS") {
+    this.props.showPeriods()
   }
 }
 
@@ -41,6 +44,7 @@ class Navbar extends React.Component {
         {this.props.current.user ? <button onClick={handleClick.bind(this)}>Sign Out</button> : <span />}
         <button onClick={handleTabs.bind(this)}>{this.props.current.user ? "Add" : "Try"} a Credit Card</button>
         {this.props.current.user ? <button onClick={handleTabs.bind(this)}>Add a Period</button> : <span />}
+        {this.props.current.user ? <button onClick={handleTabs.bind(this)}>View Periods</button> : <span />}
         <br />
         {this.props.userAccess.showSignUp ? <SignUp /> : <p />}
         {this.props.userAccess.showSignIn ? <SignIn /> : <p />}
@@ -49,4 +53,4 @@ class Navbar extends React.Component {
     )
 }}
 
-export default connect(null, { signIn,signUp,showNewCard,addPeriod,allFalse })(Navbar)
+export default connect(null, { signIn,signUp,showNewCard,addPeriod,showPeriods,allFalse })(Navbar)
