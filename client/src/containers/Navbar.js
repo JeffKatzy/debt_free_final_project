@@ -25,7 +25,6 @@ function handleClick(event){
 }
 
 class Navbar extends React.Component {
-
   render() {
     
     return (

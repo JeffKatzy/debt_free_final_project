@@ -11,10 +11,9 @@ class SinglePeriod extends Component {
     this.props.deletePeriodFromRails(event.target.id)
   }
 
-
     render(){
     return (
-               <div id={this.props.item.name}>{  
+               <div id={this.props.item.id}>{  
                 this.props.showChildren && (this.props.calledChild === this.props.item.name) ? 
                   <ul className="middleList">
                     <li>Start Date: {this.props.item.start_month} {this.props.item.start_year}</li>

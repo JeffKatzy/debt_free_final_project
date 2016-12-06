@@ -1,11 +1,8 @@
 import $ from 'jquery';
-// import { browserHistory } from 'react-router'
-// import {initialState, setInitial} from './period'
 import {setCurrentUser, setCard, setPeriod} from './current'
 import {findUser, loginUser} from './signin'
 import {setValue} from './tableData'
 export function fetchUser(id){
-  // debugger
   return function(dispatch){
     dispatch(findUser())
     $.ajax({
@@ -14,7 +11,6 @@ export function fetchUser(id){
       data: id,
       headers: {authorization: localStorage.getItem('token')}
     }).done((response) => {
-      // dispatch(persistCard(response))
       dispatch(loginUser( ))
       dispatch(setCurrentUser(response))
       let recentCard = response.credit_cards[0]
@@ -33,7 +29,6 @@ export function fetchUser(id){
                       payment: recentPeriod.payment,
                       expenditure: recentPeriod.expenditure,
                       interest: recentCard.interest_rate}
-      // debugger
       dispatch(setValue(newValues))
     })
   }

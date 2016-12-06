@@ -13,20 +13,16 @@ export function createPeriod(formData){
       data: {period: formData},
       headers: {authorization: localStorage.getItem('token')}
     }).done((response) => { 
-      // debugger
-      // dispatch(persistPeriod(response))
-      // console.log(response)
       dispatch(setPeriod(response.period))
     })
   }
 }
-
+// refactor HTK - we are probably going to need to touch here when we want a logged-in user saving a new payment period? 
 export default(state = {finding_period: false}, action) => {
   switch (action.type) {
     case 'FINDING_PERIOD':
       return Object.assign({}, state, {finding_period: true})
-    // case 'PERSIST_PERIOD':
-    //   return Object.assign({}, state, {finding_period: false, period: action.period})
+      // this never turns off? refactor HTK
     default:
       return state
   }
@@ -34,4 +30,3 @@ export default(state = {finding_period: false}, action) => {
 
 
 export const findingPeriod = () => ({type: 'FINDING_PERIOD'})
-// export const persistPeriod = (response) => ({type: 'PERSIST_PERIOD', period: response.period})

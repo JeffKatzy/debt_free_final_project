@@ -1,7 +1,6 @@
 const React = require('react')
 import TableHead from '../components/table/TableHead'
 import TableBody from '../components/table/TableBody'
-
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 function parseData(data){
@@ -54,13 +53,11 @@ class Table extends React.Component {
         current_month = "January"
         current_year += 1
       } else {
-        // debugger
         current_month = months[months.indexOf(current_month) + 1]
       }
       theDebt = theDebt - payment + expenditure + (theDebt * (this.props.data.interest / 1200))
       i += 1
     }
-    // debugger
     return (
       <div>
         <table id="the_table" className="table-fill">

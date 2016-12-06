@@ -7,3 +7,5 @@ export function signOutUser(){
 
 // export const findUser = () => ({type: 'FIND_USER'})
 // export const loginUser = () => ({type: 'LOGIN_USER'})
+
+// this doesn't do anything refactor HTK

@@ -18,9 +18,6 @@ class SignIn extends Component {
 
   handleSubmit(event){
     event.preventDefault()
-    // var email = event.target.children[1].children[1].value
-    // var password = event.target.children[2].children[1].value
-    // this.props.locateAndLoginUser({email, password})
     this.props.locateAndLoginUser(this.state)
   }
 

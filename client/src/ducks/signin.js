@@ -14,7 +14,6 @@ export function locateAndLoginUser(formData){
       datatype: 'json'
     }
     ).then((response) => {
-      // debugger
       dispatch(loginUser())
       localStorage.setItem('token', response.jwt)
       let userid = response.user.id
@@ -24,26 +23,16 @@ export function locateAndLoginUser(formData){
   }
 }
 
-export function findUser(state){
-  return { type: 'FIND_USER'}
-}
-
-// function setUser(response){
-//   return {type: 'LOGIN_USER', current_user: response.user_id}
-// }
-
-
 export default(state = {finding_user: false}, action) => {
   switch (action.type) {
     case 'FIND_USER':
       return Object.assign({}, state, {finding_user: true})
     case 'LOGIN_USER':
-      // debugger
-      return Object.assign({}, state, {finding_user: false, current_user: action.current_user})
+      return Object.assign({}, state, {finding_user: false})
     default:
       return state
   }
 }
 
-// export const findUser = () => ({type: 'FIND_USER'})
+export const findUser = () => ({type: 'FIND_USER'})
 export const loginUser = () => ({type: 'LOGIN_USER'})

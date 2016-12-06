@@ -7,12 +7,9 @@ class NewPeriod extends Component {
   constructor(props){
     super(props)
     this.state = {start_month: '', start_year: '', end_month: '', end_year: '', expenditure:'', payment: '', credit_card_id: this.props.card, name: ''}
-    // debugger
-    // use mapStateToProps to find the Current Credit Card, which we haven't established yet
   }
 
   handleStartDate(event){
-    // debugger
     let array_date = event.target.value.split('-')
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     this.setState({start_year: array_date[0], start_month: months[array_date[1]-1]})

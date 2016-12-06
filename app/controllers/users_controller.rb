@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user
-  # , only: [:new, :create]
+  skip_before_action :authenticate_user, only: [:new, :create]
 
   def show
     user = User.find(params[:id])
@@ -17,6 +16,13 @@ class UsersController < ApplicationController
       render json: {error: 'user not unique'}
     end
   end
+  
+  # def update
+  # end
+# these methods do nothing -- yet -- refactor HTK
+  # def destroy
+  # end
+
 
   def index
     users = User.all
