@@ -23,13 +23,13 @@ class App extends Component {
           {this.props.userAccess.showPeriodList && <PeriodList data={this.props.current} removePeriodFromCurrent={this.props.removePeriodFromCurrent} setPeriod={this.props.setPeriod} />}
         </div>
         <div className="container">
-          {((this.props.current.card && this.props.userAccess.showNewCard) || (this.props.current.user && this.props.current.user.credit_cards)) && <Form data={this.props.data} current={this.props.current} setValue={this.props.setValue} setCard={this.props.setCard} />}
-        </div>
-        <div className="container">
           {(this.props.userAccess.showNewCard || (this.props.current.user && !this.props.current.user.credit_cards)) && <NewCard current={this.props.current}/>}
         </div>
         <div className="container">
           {this.props.userAccess.addPeriod && <NewPeriod card={this.props.current.card.id} />}
+        </div>
+        <div className="container">
+          {((this.props.current.card && this.props.userAccess.showNewCard) || (this.props.current.user && this.props.current.user.credit_cards)) && <Form data={this.props.data} current={this.props.current} setValue={this.props.setValue} setCard={this.props.setCard} />}
         </div>
         <div className="container">
           {(this.props.userAccess.showNewCard || this.props.current.user) && <Table data={this.props.data} current={this.props.current} />}

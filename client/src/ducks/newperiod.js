@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import { browserHistory } from 'react-router'
 import {setPeriod, addPeriodToUser, removePeriodFromUser, removePeriodFromCurrent} from './current'
-// import {initialState, setInitial} from './period'
 
 
 export function createPeriod(formData){

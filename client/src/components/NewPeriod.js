@@ -38,7 +38,6 @@ class NewPeriod extends Component {
     event.preventDefault()
     this.props.createPeriod(this.state)
     this.props.addPeriodToUser(this.state)
-    //add period to current? is that 
   }
 
   render(){

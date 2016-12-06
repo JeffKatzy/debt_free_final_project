@@ -70,7 +70,7 @@ class NewCard extends Component {
          <p><label id="userLabel">Interest Rate</label><input type="number" id="interest_rate" step=".01" onChange={this.handleInterest.bind(this)} />%</p>
          <p><label id="userLabel">Monthly Expenditure</label><input type="number" id="expenditure" step=".01" onChange={this.handleExpenditure.bind(this)} /></p>
          <p><label id="userLabel">Monthly Payment</label><input type="number" id="payment" step=".01" onChange={this.handlePayment.bind(this)} />
-         <input type="radio" id="$" onChange={this.handleRadio.bind(this)} name="paymentType" />$<input type="radio" id="%" name="paymentType" defaultChecked={true} onChange={this.handleRadio.bind(this)} />%</p>
+         <input type="radio" id="$" onChange={this.handleRadio.bind(this)} name="paymentType" defaultChecked={true} />$<input type="radio" id="%" name="paymentType" onChange={this.handleRadio.bind(this)} />%</p>
          <p><input type="submit" onClick={this.setSubmit.bind(this)} id="preview" value="preview" /></p>
          {this.props.current.user !== "" ? <p><input type="submit" onClick={this.setSubmit.bind(this)} id="rails" value="store" /></p> : <span />}
       </form>
