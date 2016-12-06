@@ -22,7 +22,6 @@ export function locateAndLoginUser(formData){
     }).catch((response)=>{
       let message = response.responseJSON
       dispatch(errorMessage(message))
-      // dispatch() something that shows that error message on top 
     })
   }
 }
@@ -32,13 +31,13 @@ export default(state = {finding_user: false, error: ''}, action) => {
     case 'FIND_USER':
       return Object.assign({}, state, {finding_user: true})
     case 'LOGIN_USER':
-      return Object.assign({}, state, {finding_user: false})
-    case 'ERROR':
+      return Object.assign({}, state, {finding_user: false, error: ''})
+    case 'SIGN_IN_ERROR':
       return Object.assign({}, state, action.payload)
     default:
       return state
   }
 }
-export const errorMessage = (input) => ({type: 'ERROR', payload: input})
+export const errorMessage = (input) => ({type: 'SIGN_IN_ERROR', payload: input})
 export const findUser = () => ({type: 'FIND_USER'})
 export const loginUser = () => ({type: 'LOGIN_USER'})

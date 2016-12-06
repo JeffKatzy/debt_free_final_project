@@ -32,7 +32,7 @@ class SignIn extends Component {
             <input type="password" placeholder="your password" onChange={this.handleOnPasswordChange.bind(this)} /></p>
             <input type="submit" />
         </form>
-        {this.props.signin.error ? <h2>{this.props.signin.error}</h2> : <span /> }
+        {this.props.signin.error ? <h2 className="error">{this.props.signin.error}</h2> : <span /> }
       </div>
     )
   }

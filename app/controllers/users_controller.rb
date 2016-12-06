@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       jwt = Auth.issue({user_id: user.id})
       render json: {jwt: jwt, user: user}
     else
-      render json: {error: 'user not unique'}
+      render status: 404, json: {error: user.errors.full_messages}
     end
   end
 

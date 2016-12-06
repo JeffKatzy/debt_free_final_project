@@ -2,12 +2,12 @@ class CreditCardsController < ApplicationController
   skip_before_action :authenticate_user
   
   def create
+    params[:card][:min_payment] = params[:card][:payment]
     card = CreditCard.new(card_params)
-    # byebug
     if card.save
       render json: {card: card}
     else
-      render json: {error: 'something is wrong with your data'}
+      render status: 404, json: {error: card.errors.full_messages}
     end
   end
 

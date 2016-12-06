@@ -22,3 +22,7 @@
   background-color: silver;
 font-family: 'Reem Kufi', sans-serif;
 }
+
+.error {
+  color: red;
+}

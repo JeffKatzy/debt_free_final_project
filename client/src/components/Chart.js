@@ -3,16 +3,17 @@ import Recharts from 'recharts'
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts'
 
 const Chart = (props) => {
+  // debugger
   return(
     <div>
       <LineChart width={730} height={250} data={props.data}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
         <XAxis dataKey="month" />
-        <YAxis/>
+        <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="payment" stroke="#8884d8" />
+        <Line dataKey="payment" />
     </LineChart>
     </div>
   )

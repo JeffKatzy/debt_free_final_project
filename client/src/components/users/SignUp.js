@@ -39,9 +39,15 @@ class Signup extends Component {
             <input type="password" placeholder="your password" onChange={this.handleOnPasswordChange.bind(this)} /></p>
             <input type="submit" />
         </form>
+          {this.props.signup.error ? <h2 className="error">{this.props.signup.error}</h2> : <span /> }
+
       </div>
     )
   }
 }
 
-export default connect(null, { createUser })(Signup)
+function mapStateToProps(state){
+  return {signup: state.signup}
+}
+
+export default connect(mapStateToProps, { createUser })(Signup)
