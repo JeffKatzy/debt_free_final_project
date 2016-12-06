@@ -21,9 +21,15 @@ export default (state={user: "", card: "", periods: []}, action) => {
       return  Object.assign({}, state, {user: thing})
     case 'SET_PERIOD':
       return {...state, periods: [...state.periods, ...action.payload]}
+    case 'OVERWRITE_PERIODS':
+      return {...state, periods: action.payload}
     default:
       return state
   }
+}
+
+export function overWritePeriods(input){
+  return {type: 'OVERWRITE_PERIODS', payload: input}
 }
 
 export function deletePeriodFromRails(input){
