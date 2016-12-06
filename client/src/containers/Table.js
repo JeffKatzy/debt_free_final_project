@@ -5,8 +5,8 @@ import TableBody from '../components/table/TableBody'
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 function parseData(data){
-  var parts= String(+parseFloat(data).toFixed(2)).split(".")
-  parts = String(parts[0]).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
+  var parts= String(parseFloat(data).toFixed(2)).split(".")
+  parts = String(parts[0]).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "")
   return parts
 }
 
