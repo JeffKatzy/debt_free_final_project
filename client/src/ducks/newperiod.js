@@ -4,7 +4,6 @@ import {setPeriod, addPeriodToUser, removePeriodFromUser, removePeriodFromCurren
 
 
 export function createPeriod(formData){
-  
   return function(dispatch){
     dispatch(findingPeriod())
     $.ajax({
@@ -28,16 +27,13 @@ export function editPeriod(formData){
       data: {period: formData},
       headers: {authorization: localStorage.getItem('token')}
     }).done((response) => { 
-      // debugger      
       dispatch(removePeriodFromCurrent(response.period.id)) 
       dispatch(removePeriodFromUser(response.period.id))
       dispatch(setPeriod([response.period]))
       dispatch(addPeriodToUser(response.period))
       dispatch(foundPeriod())
     })
-
   }
-
 }
 
 export default(state = {finding_period: false}, action) => {

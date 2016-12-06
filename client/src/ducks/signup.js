@@ -33,4 +33,4 @@ export default(state = {creating_user: false}, action) => {
 
 
 export const findingUser = () => ({type: 'FINDING_USER'})
-export const loginUser = (response) => ({type: 'LOGIN_CREATED_USER', current_user: response.user_id})
+export const loginUser = (response) => ({type: 'LOGIN_CREATED_USER'})

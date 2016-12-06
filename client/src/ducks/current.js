@@ -1,6 +1,5 @@
 import $ from 'jquery';
 
-
 export default (state={user: "", card: "", periods: []}, action) => {
   switch (action.type) {
     case 'SET_USER':
@@ -46,7 +45,6 @@ export function deletePeriodFromRails(input){
       dispatch(removePeriodFromUser(response.id))
     })
   }
-
 }
 
 export function removePeriodFromCurrent(input){

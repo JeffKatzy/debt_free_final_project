@@ -18,14 +18,10 @@ class SignIn extends Component {
 
   handleSubmit(event){
     event.preventDefault()
-    // var email = event.target.children[1].children[1].value
-    // var password = event.target.children[2].children[1].value
-    // this.props.locateAndLoginUser({email, password})
     this.props.locateAndLoginUser(this.state)
   }
 
   render(){
-
     return(
       <div id="forms">
         <form onSubmit={this.handleSubmit.bind(this)}>
@@ -36,9 +32,14 @@ class SignIn extends Component {
             <input type="password" placeholder="your password" onChange={this.handleOnPasswordChange.bind(this)} /></p>
             <input type="submit" />
         </form>
+        {this.props.signin.error ? <h2>{this.props.signin.error}</h2> : <span /> }
       </div>
     )
   }
 }
 
-export default connect(null, { locateAndLoginUser })(SignIn)
+function mapStateToProps(state){
+  return {signin: state.signin}
+}
+
+export default connect(mapStateToProps, { locateAndLoginUser })(SignIn)
