@@ -1,6 +1,7 @@
 const React = require('react')
 import TableHead from '../components/table/TableHead'
 import TableBody from '../components/table/TableBody'
+import Chart from '../components/Chart'
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
@@ -34,6 +35,7 @@ class Table extends React.Component {
     let current_year = new Date().getFullYear()
     let i = 0, payment = this.props.data.payment, expenditure = this.props.data.expenditure, period = "Default";
     let total_interest = 0
+    let payment_array = []
 
     while (theDebt > 0 && i < 200){
       let inPeriod = allPeriods(this.props.current.periods, current_month, current_year)
@@ -47,6 +49,7 @@ class Table extends React.Component {
         expenditure = this.props.data.expenditure
         period = "Default"
       }
+      payment_array.push({month:i, payment:parseData(payment)})
       total_interest += (theDebt * (this.props.data.interest / 1200))
       future_data.push(
       <tr key={i}>
@@ -69,15 +72,17 @@ class Table extends React.Component {
       theDebt = theDebt - payment + expenditure + (theDebt * (this.props.data.interest / 1200))
       i += 1
     }
-    // debugger
     return (
       <div>
-        {this.props.data.debt && <h4> Months to Debt Free: {i==200 ? "Infinite" : i} </h4>}
-        {this.props.data.debt && <h4> Total Interest Paid (in Today's Dollars): {i==200 ? "Infinite" : "$" + parseData(total_interest)} </h4>}
-        <table id="the_table" className="table-fill">
-          <TableHead />
-          {(this.props.data.start_month !== undefined && this.props.data.start_year && this.props.data.expenditure !== undefined && this.props.data.payment && this.props.data.debt) ? <TableBody data={future_data} /> : <tbody></tbody>}
-        </table>
+        <Chart data={payment_array}/>
+        <div>
+          {this.props.data.debt && <h4> Months to Debt Free: {i==200 ? "Infinite" : i} </h4>}
+          {this.props.data.debt && <h4> Total Interest Paid (in Today's Dollars): {i==200 ? "Infinite" : "$" + parseData(total_interest)} </h4>}
+          <table id="the_table" className="table-fill">
+            <TableHead />
+            {(this.props.data.start_month !== undefined && this.props.data.start_year && this.props.data.expenditure !== undefined && this.props.data.payment && this.props.data.debt) ? <TableBody data={future_data} /> : <tbody></tbody>}
+          </table>
+        </div>
       </div>
     )
 }
