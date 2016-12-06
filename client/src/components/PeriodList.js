@@ -49,7 +49,7 @@ export default class PeriodList extends React.Component {
         <div key={index}>
           <h4 className="clickable" onClick={this.showChildren.bind(this)}>{item.name}</h4>
           <input type="checkbox" defaultChecked="true" onClick={this.editPeriod.bind(this)} id={item.name} />
-          <SinglePeriod item={item} showChildren={this.state.showChildren} calledChild={this.state.calledChild}   />
+          <SinglePeriod item={item} showChildren={this.state.showChildren} calledChild={this.state.calledChild} />
         </div>
       )
     })
@@ -58,9 +58,9 @@ export default class PeriodList extends React.Component {
   return(
     <div className="periodList twelve columns">
       <h2>Payment Periods</h2>
-      <ul>
-      {showThis}
-      </ul>
+        <ul>
+          {showThis}
+        </ul>
     </div>
   )}
 }
