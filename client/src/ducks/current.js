@@ -14,8 +14,10 @@ export default (state={user: "", card: "", periods: []}, action) => {
     case 'REMOVE_PERIOD_FROM_CURRENT':
       var filteredPeriods = state.periods.filter(item=>{ if (item.id != action.payload)
       {return item}})
+      // debugger
       return {...state, periods: filteredPeriods}
     case 'REMOVE_PERIOD_FROM_USER':
+      // debugger
       var filteredPeriods = state.user.periods.filter(item=>{ return item.id != action.payload})
       var filteredUser = Object.assign(state.user, {}, {periods: filteredPeriods})
       return  Object.assign({}, state, {user: filteredUser})
@@ -42,8 +44,8 @@ export function deletePeriodFromRails(input){
       datatype: 'json',
       headers: {authorization: localStorage.getItem('token')}
     }).done((response) => {
-      dispatch(removePeriodFromCurrent(response))
-      dispatch(removePeriodFromUser(response))
+      dispatch(removePeriodFromCurrent(response.id))
+      dispatch(removePeriodFromUser(response.id))
     })
   }
 

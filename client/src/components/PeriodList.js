@@ -1,8 +1,8 @@
 import React from 'react'
 import SinglePeriod from './SinglePeriod'
+import PeriodEdit from './PeriodEdit'
 import {removePeriodFromCurrent, setPeriod} from '../ducks/current'
 import {connect} from 'react-redux'
-import PeriodEdit from './PeriodEdit'
 
 export default class PeriodList extends React.Component {
   
@@ -18,8 +18,9 @@ export default class PeriodList extends React.Component {
       this.setState({showChildren: !this.state.showChildren, calledChild: ""})
     }
     else {this.setState({showChildren: !this.state.showChildren, calledChild: event.target.innerHTML})
+    }
   }
-}
+
   editPeriodDetails(event){
     this.setState({showEditForm: !this.state.showEditForm, editChild: event.target.id})
   }
@@ -36,10 +37,9 @@ export default class PeriodList extends React.Component {
   else {
     let period = this.props.data.user.periods.filter(item=>{return item.id == event.target.id})
     this.props.setPeriod(period)
+    }
   }
-  
 
-  }
   render(){
     let shownPeriod, showThis
     if (this.props.data.user !== ""){
@@ -67,7 +67,8 @@ export default class PeriodList extends React.Component {
           {showThis}
         </ul>
     </div>
-  )}
+  )
+  }
 }
 
 // export default connect(null, { setPeriod })(PeriodList)

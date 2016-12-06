@@ -21,7 +21,7 @@ class PeriodsController < ApplicationController
     period = Period.find(params[:id])
     sendName = period.id
     period.delete 
-    render json: {id: id}
+    render json: {id: sendName}
   end
 
   def period_params
