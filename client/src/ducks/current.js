@@ -12,14 +12,15 @@ export default (state={user: "", card: "", periods: []}, action) => {
     case 'ADD_PERIOD_TO_USER':
       return{...state, user: {...state.user, periods: [...state.user.periods, action.payload]} }
     case 'REMOVE_PERIOD_FROM_CURRENT':
-      var filteredPeriods = state.periods.filter(item=>{ if (item.name !== action.payload)
+      var filteredPeriods = state.periods.filter(item=>{ if (item.id !== action.payload)
       {return item}})
       return {...state, periods: filteredPeriods}
     case 'REMOVE_PERIOD_FROM_USER':
-      var filteredPeriods = state.user.periods.filter(item=>{ return item.name !== action.payload})
+      var filteredPeriods = state.user.periods.filter(item=>{ return item.id !== action.payload})
       var filteredUser = Object.assign(state.user, {}, {periods: filteredPeriods})
       return  Object.assign({}, state, {user: filteredUser})
     case 'SET_PERIOD':
+      // debugger
       return {...state, periods: [...state.periods, ...action.payload]}
     case 'OVERWRITE_PERIODS':
       return {...state, periods: action.payload}
@@ -49,7 +50,6 @@ export function deletePeriodFromRails(input){
 
 }
 
-
 export function removePeriodFromCurrent(input){
   return {type: 'REMOVE_PERIOD_FROM_CURRENT', payload: input}
 }
@@ -65,17 +65,13 @@ export function removePeriodFromUser(input){
   return {type: 'REMOVE_PERIOD_FROM_USER', payload: input}
 }
 
-
-
 export function setCurrentUser(input){
   return {type: 'SET_USER', payload: input}
 }
 
-
 export function setCard(input){
   return {type: 'SET_CARD', payload: input}
 }
-
 
 export function setPeriod(input){
   return {type: 'SET_PERIOD', payload: input}
