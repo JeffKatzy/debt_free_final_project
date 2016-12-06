@@ -15,9 +15,7 @@ function allPeriods(periods, current_month, current_year) {
     let current_date = new Date(current_month+" 1, "+current_year.toString())
     let period_start_date = new Date(periods[i].start_month+" 1, "+periods[i].start_year.toString())
     let period_end_date = new Date(periods[i].end_month+" 1, "+periods[i].end_year.toString())
-    // debugger
     if (period_start_date <= current_date && current_date <= period_end_date) {
-      // debugger
       return periods[i]
     }
     // if (period_start_date <= current_date <= period_end_date) {

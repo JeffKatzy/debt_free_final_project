@@ -7,14 +7,19 @@
   color: grey;
   font-size: 2em;
   padding: 0% 2%;
+  font-family: 'Sahitya', serif;
 }
 
 #navbar button {
   color: white;
   background-color: grey;
-  width: 200px;
+  width: auto;
+  font-family: 'Reem Kufi', sans-serif;
+
+  margin-right: 10px;
 }
 
 #navbar button:hover {
   background-color: silver;
+font-family: 'Reem Kufi', sans-serif;
 }

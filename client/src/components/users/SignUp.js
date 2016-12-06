@@ -22,10 +22,6 @@ class Signup extends Component {
 
   handleSubmit(event){
     event.preventDefault()
-    // var name = event.target.children[2].value
-    // var email = event.target.children[4].value
-    // var password = event.target.children[6].value
-    // this.props.createUser({name, email, password})
     this.props.createUser(this.state)
   }
 

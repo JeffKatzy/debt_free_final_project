@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user
-  # , only: [:new, :create]
+  skip_before_action :authenticate_user, only: [:new, :create]
 
   def show
     user = User.find(params[:id])
@@ -23,6 +22,11 @@ class UsersController < ApplicationController
     render json: users
   end 
 
+  # def update
+  # end
+  # def destroy
+  # end
+# REFACTOR HTK - add these actions 
   def user_params
     params.require(:auth).permit(:name, :email, :password)
   end

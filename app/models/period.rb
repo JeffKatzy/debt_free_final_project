@@ -8,6 +8,7 @@ class Period < ApplicationRecord
   validates :expenditure, presence: true
   validates :payment, presence: true
   validates :name, presence: true
+  delegate :user, to: :credit_card
   # after_initialize :defaults, unless: :persisted?
 
   # def defaults

@@ -13,9 +13,6 @@ export function createPeriod(formData){
       data: {period: formData},
       headers: {authorization: localStorage.getItem('token')}
     }).done((response) => { 
-      // debugger
-      // dispatch(persistPeriod(response))
-      // console.log(response)
       dispatch(setPeriod(response.period))
     })
   }

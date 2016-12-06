@@ -14,7 +14,7 @@ class SinglePeriod extends Component {
 
     render(){
     return (
-               <span id={this.props.item.name}>{
+               <span id={this.props.item.id}>{
                 this.props.showChildren && (this.props.calledChild === this.props.item.name) ?
                   <ul className="middleList">
                     <li>Start Date: {this.props.item.start_month} {this.props.item.start_year} </li>

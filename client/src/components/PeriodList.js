@@ -2,17 +2,14 @@ import React from 'react'
 import SinglePeriod from './SinglePeriod'
 import {removePeriodFromCurrent, setPeriod} from '../ducks/current'
 import {connect} from 'react-redux'
-// import {setPeriod} from '../ducks/current'
 
 export default class PeriodList extends React.Component {
   constructor(props){
     super(props)
-    // debugger
     this.state = {showChildren: false, calledChild: ""}
   }
 
   showChildren(event){
-    //
     if (this.state.calledChild !== event.target.innerHTML && this.state.calledChild !== "")
       { this.setState({calledChild: event.target.innerHTML}) }
     else if (this.state.calledChild === event.target.innerHTML){
@@ -31,20 +28,17 @@ export default class PeriodList extends React.Component {
     let period = this.props.data.user.periods.filter(item=>{return item.name === event.target.id})
     this.props.setPeriod(period)
   }
-    // else
-      // this.props.setPeriod
   }
   render(){
-  let dropDownPeriod, showThis
+  let shownPeriod, showThis
 
   if (this.props.data.user !== ""){
-    dropDownPeriod = this.props.data.user.periods.filter(period=>{
+    shownPeriod = this.props.data.user.periods.filter(period=>{
       return period.credit_card_id == this.props.data.card.id
     })
   }
-  if (dropDownPeriod) {
-    // debugger
-    showThis = dropDownPeriod.map((item, index)=>{
+  if (shownPeriod) {
+    showThis = shownPeriod.map((item, index)=>{
       return (
         <div key={index}>
           <h4 className="clickable" onClick={this.showChildren.bind(this)}>{item.name}</h4>
@@ -66,11 +60,3 @@ export default class PeriodList extends React.Component {
 }
 
 // export default connect(null, { setPeriod })(PeriodList)
-
-
- // <li>Start Month</li>
- //               <li>Start Year</li>
- //               <li>End Month</li>
- //               <li>End Year</li>
- //               <li>Expenditure</li>
- //               <li>Payment</li>

@@ -24,14 +24,15 @@ export function fetchUser(id){
       })
       let recentPeriod = recentCardPeriods[recentCardPeriods.length-1]
       dispatch(setPeriod(recentCardPeriods))
+      let averageExpenditure = recentCardPeriods.reduce((a,b)=>{return a + b.expenditure}, 0)/recentCardPeriods.length
       const newValues = {debt: recentCard.debt,
                       start_month: new Date().getMonth(),
                       start_year: new Date().getFullYear(),
-                      end_month: recentPeriod.end_month,
-                      end_year: recentPeriod.end_year,
+                      // end_month: recentPeriod.end_month,
+                      // end_year: recentPeriod.end_year,
                       creditcard: recentCard.name,
-                      payment: recentPeriod.payment,
-                      expenditure: recentPeriod.expenditure,
+                      payment: (recentCard.min_payment * recentCard.debt) / 1200,
+                      expenditure: averageExpenditure,
                       interest: recentCard.interest_rate}
       // debugger
       dispatch(setValue(newValues))

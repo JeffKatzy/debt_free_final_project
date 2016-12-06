@@ -6,7 +6,7 @@ import thunk from 'redux-thunk'
 import rootReducer from './ducks'
 import { setInitial } from './ducks/userAccess.js'
 import App from './containers/App.js';
-import '../public/css/index.css';
+import '../public/css/table.css';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 

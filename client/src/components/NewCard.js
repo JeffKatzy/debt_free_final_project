@@ -42,7 +42,6 @@ class NewCard extends Component {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     let date = new Date()
     this.props.setCard(this.state)
-    // debugger
     let payment = this.state.payment_type === "%" ? this.state.payment * this.state.debt / 1200 : this.state.payment
     this.props.setPeriod({payment: payment, expenditure: 0})
     const newValues = {debt: this.state.debt,
@@ -71,7 +70,7 @@ class NewCard extends Component {
          <p><label id="userLabel">Interest Rate</label><input type="number" id="interest_rate" step=".01" onChange={this.handleInterest.bind(this)} />%</p>
          <p><label id="userLabel">Monthly Expenditure</label><input type="number" id="expenditure" step=".01" onChange={this.handleExpenditure.bind(this)} /></p>
          <p><label id="userLabel">Monthly Payment</label><input type="number" id="payment" step=".01" onChange={this.handlePayment.bind(this)} />
-         <input type="radio" id="$" onChange={this.handleRadio.bind(this)} defaultChecked={true} name="paymentType" />$<input type="radio" id="%" name="paymentType" onChange={this.handleRadio.bind(this)} />%</p>
+         <input type="radio" id="$" onChange={this.handleRadio.bind(this)} name="paymentType" />$<input type="radio" id="%" name="paymentType" defaultChecked={true} onChange={this.handleRadio.bind(this)} />%</p>
          <p><input type="submit" onClick={this.setSubmit.bind(this)} id="preview" value="preview" /></p>
          {this.props.current.user !== "" ? <p><input type="submit" onClick={this.setSubmit.bind(this)} id="rails" value="store" /></p> : <span />}
       </form>

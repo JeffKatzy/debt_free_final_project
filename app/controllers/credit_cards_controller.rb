@@ -21,11 +21,11 @@ class CreditCardsController < ApplicationController
     render json: cards
   end 
 
-  def update
-  end
-
-  def destroy
-  end
+  # def update
+  # end
+  # def destroy
+  # end
+# REFACTOR HTK - add these actions 
 
   def card_params
     params.require(:card).permit(:name, :debt, :interest_rate, :user_id, :min_payment)

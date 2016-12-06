@@ -17,11 +17,9 @@ const Form = (props) => {
     props.setCard(newCard)
     props.setValue(newCard)
     let cardId = newCard.id
-    debugger
     let newPeriods = props.current.user.periods.filter(period=>{return period.credit_card_id === newCard.id})
     props.overWritePeriods(newPeriods)
-    // props.data.user.periods
-    // filter on cardId
+
   }
 
   const handleNewPeriod = () => {
