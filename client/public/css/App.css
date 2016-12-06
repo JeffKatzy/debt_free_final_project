@@ -40,16 +40,17 @@ select {
 }
 
 .periodList {
-  display:block;
+  width: 15%;
+  display:inline;
   text-align: center;
+  margin: 0 auto;
 }
 
-#newcreditcardform {
+#forms {
   text-align: center;
-}
-
-#userAccess {
-  text-align: left;
+  margin: 0 auto;
+  background-color: white;
+  color: black;
 }
 
 #signtitle {
@@ -61,4 +62,8 @@ select {
   font-size: 1.25em;
   padding-right: 5px;
   text-align: left;
+}
+
+ul li {
+  display: inline;
 }

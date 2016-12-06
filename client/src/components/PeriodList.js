@@ -35,28 +35,25 @@ export default class PeriodList extends React.Component {
       // this.props.setPeriod
   }
   render(){
-    // debugger
-  let dropDownPeriod
-  let showThis
-  // debugger
-  if (this.props.data.user !== "")
-  {dropDownPeriod = this.props.data.user.periods.filter(item=>{
-    return item.credit_card_id == this.props.data.card.id
-  })}
+  let dropDownPeriod, showThis
 
-  if (dropDownPeriod) {
-      showThis = dropDownPeriod.map((item, index)=>{
-    return (
-          <div key={index}>
-            <h4 className="clickable" onClick={this.showChildren.bind(this)}>{item.name}</h4>
-            <input type="checkbox" defaultChecked="true" onClick={this.editPeriod.bind(this)} id={item.name} />
-            <SinglePeriod item={item} showChildren={this.state.showChildren} calledChild={this.state.calledChild}   />
-          </div>
-            )
-  })
+  if (this.props.data.user !== ""){
+    dropDownPeriod = this.props.data.user.periods.filter(period=>{
+      return period.credit_card_id == this.props.data.card.id
+    })
   }
-
-
+  if (dropDownPeriod) {
+    // debugger
+    showThis = dropDownPeriod.map((item, index)=>{
+      return (
+        <div key={index}>
+          <h4 className="clickable" onClick={this.showChildren.bind(this)}>{item.name}</h4>
+          <input type="checkbox" defaultChecked="true" onClick={this.editPeriod.bind(this)} id={item.name} />
+          <SinglePeriod item={item} showChildren={this.state.showChildren} calledChild={this.state.calledChild}   />
+        </div>
+      )
+    })
+  }
 
   return(
     <div className="periodList twelve columns">

@@ -9,8 +9,8 @@ import newPeriod from './newperiod.js'
 import current from './current.js'
 
 const rootReducer = combineReducers({
-  userAccess,
   tableData,
+  userAccess,
   overpayment,
   signup,
   signin,

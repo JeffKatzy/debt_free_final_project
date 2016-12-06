@@ -27,7 +27,7 @@ class SignIn extends Component {
   render(){
 
     return(
-      <div className="four columns">
+      <div id="forms">
         <form onSubmit={this.handleSubmit.bind(this)}>
             <h2> Sign In </h2>
             <p><label id="userLabel"> Email </label>

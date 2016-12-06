@@ -13,19 +13,26 @@ import '../../public/css/App.css';
 
 class App extends Component {
   render() {
+    console.log(this.props)
     let contents = (
       <div>
         <div className="container">
           <Navbar userAccess={this.props.userAccess} current={this.props.current} />
         </div>
         <div className="container">
-          <PeriodList data={this.props.current} removePeriodFromCurrent={this.props.removePeriodFromCurrent} setPeriod={this.props.setPeriod} />
+          {this.props.userAccess.addPeriod && <PeriodList data={this.props.current} removePeriodFromCurrent={this.props.removePeriodFromCurrent} setPeriod={this.props.setPeriod} />}
         </div>
         <div className="container">
-          {!this.props.current.user.credit_cards && <NewCard current={this.props.current}/>}
-          {this.props.current.user.credit_cards && <Form data={this.props} setValue={this.props.setValue} setCard={this.props.setCard} />}
+          {(this.props.userAccess.showNewCard || (this.props.current.user && !this.props.current.user.credit_cards)) && <NewCard current={this.props.current}/>}
+        </div>
+        <div className="container">
+          {((this.props.current.card && this.props.userAccess.showNewCard) || (this.props.current.user && this.props.current.user.credit_cards)) && <Form data={this.props.data} current={this.props.current} setValue={this.props.setValue} setCard={this.props.setCard} />}
+        </div>
+        <div className="container">
           {this.props.userAccess.addPeriod && <NewPeriod card={this.props.current.card.id} />}
-          <Table data={this.props.data} current={this.props.current} />
+        </div>
+        <div className="container">
+          {(this.props.userAccess.showNewCard || this.props.current.user) && <Table data={this.props.data} current={this.props.current} />}
         </div>
       </div>)
     return (

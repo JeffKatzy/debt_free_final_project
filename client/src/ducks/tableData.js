@@ -7,14 +7,9 @@ export default (state={}, action) => {
     case 'SET_VALUE':
       return Object.assign({}, state, action.payload)
     default:
-      return {}
+      return state
   }
 }
 
 // export const setInitial = () => ({type: 'SET_STATE'})
-export const setValue = (obj) => {
- 
-  return (
-    {type: 'SET_VALUE', payload: obj}
-  )
-}
+export const setValue = (obj) => ({type: 'SET_VALUE', payload: obj})

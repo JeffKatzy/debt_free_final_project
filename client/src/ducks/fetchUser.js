@@ -25,8 +25,8 @@ export function fetchUser(id){
       let recentPeriod = recentCardPeriods[recentCardPeriods.length-1]
       dispatch(setPeriod(recentCardPeriods))
       const newValues = {debt: recentCard.debt,
-                      start_month: recentPeriod.start_month,
-                      start_year: recentPeriod.start_year,
+                      start_month: new Date().getMonth(),
+                      start_year: new Date().getFullYear(),
                       end_month: recentPeriod.end_month,
                       end_year: recentPeriod.end_year,
                       creditcard: recentCard.name,

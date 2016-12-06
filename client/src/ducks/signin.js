@@ -1,7 +1,8 @@
 import $, { ajax } from 'jquery';
-import  {setValue} from './tableData'
+// import  {setValue} from './tableData'
 import {setCurrentUser} from './current'
 import {fetchUser} from './fetchUser'
+import {showNewCard,allFalse} from './userAccess'
 
 export function locateAndLoginUser(formData){
   return function(dispatch){
@@ -19,6 +20,7 @@ export function locateAndLoginUser(formData){
       localStorage.setItem('token', response.jwt)
       let userid = response.user.id
       dispatch(fetchUser(userid))
+      dispatch(allFalse())
 
     })
   }

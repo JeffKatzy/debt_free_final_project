@@ -12,10 +12,12 @@ function parseData(data){
 
 function allPeriods(periods, current_month, current_year) {
   for (let i = 0; i < periods.length; i++){
-    let current_date = current_month+" 1, "+current_year.toString()
-    let period_start_date = periods[i].start_month+" 1, "+periods[1].start_year.toString()
-    let period_end_date = periods[i].end_month+" 1, "+periods[1].end_year.toString()
+    let current_date = new Date(current_month+" 1, "+current_year.toString())
+    let period_start_date = new Date(periods[i].start_month+" 1, "+periods[i].start_year.toString())
+    let period_end_date = new Date(periods[i].end_month+" 1, "+periods[i].end_year.toString())
+    // debugger
     if (period_start_date <= current_date && current_date <= period_end_date) {
+      // debugger
       return periods[i]
     }
     // if (period_start_date <= current_date <= period_end_date) {
@@ -30,29 +32,33 @@ class Table extends React.Component {
   render() {
     let future_data = []
     let theDebt = this.props.data.debt
-    let current_month = this.props.data.start_month
+    let current_month = parseFloat(this.props.data.start_month) === NaN ? this.props.data.start_month : months[this.props.data.start_month]
     let current_year = new Date().getFullYear()
-    let i = 0, payment = this.props.data.payment, expenditure = this.props.data.expenditure;
+    let i = 0, payment = this.props.data.payment, expenditure = this.props.data.expenditure, period = "Default";
 
     while (theDebt > 0 && i < 200){
       let inPeriod = allPeriods(this.props.current.periods, current_month, current_year)
       if (inPeriod) {
         payment = inPeriod.payment
         expenditure = inPeriod.expenditure
+        period = inPeriod.name
+
       }
       else {
         payment = this.props.data.payment
         expenditure = this.props.data.expenditure
+        period = "Default"
       }
       future_data.push(
       <tr key={i}>
-        <td key={0} className="text-left">{current_year}</td>
-        <td key={1} className="text-left">{current_month}</td>
-        <td key={2} className="text-left">${parseData(theDebt)}</td>
-        <td key={3} className="text-left">${parseData(payment)}</td>
-        <td key={4} className="text-left">${parseData(expenditure)}</td>
-        <td key={5} className="text-left">${parseData(theDebt * (this.props.data.interest / 1200))}</td>
-        <td key={6} className="text-left">${parseData(theDebt - payment + expenditure + (theDebt * (this.props.data.interest / 1200)))}</td>
+        <td key={0} className="text-left">{period}</td>
+        <td key={1} className="text-left">{current_year}</td>
+        <td key={2} className="text-left">{current_month}</td>
+        <td key={3} className="text-left">${parseData(theDebt)}</td>
+        <td key={4} className="text-left">${parseData(payment)}</td>
+        <td key={5} className="text-left">${parseData(expenditure)}</td>
+        <td key={6} className="text-left">${parseData(theDebt * (this.props.data.interest / 1200))}</td>
+        <td key={7} className="text-left">${parseData(theDebt - payment + expenditure + (theDebt * (this.props.data.interest / 1200)))}</td>
       </tr>)
       if (months.indexOf(current_month) + 1 > months.length - 1){
         current_month = "January"

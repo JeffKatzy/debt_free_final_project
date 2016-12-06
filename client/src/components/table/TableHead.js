@@ -3,6 +3,7 @@ import React from 'react'
 const TableHead = () => {
   return (
     <thead><tr>
+      <th className="text-center">Period</th>
       <th className="text-center">Year</th>
       <th className="text-center">Month</th>
       <th className="text-center">Debt</th>
