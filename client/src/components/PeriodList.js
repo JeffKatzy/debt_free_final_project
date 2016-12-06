@@ -5,15 +5,15 @@ import {removePeriodFromCurrent, setPeriod} from '../ducks/current'
 import {connect} from 'react-redux'
 
 export default class PeriodList extends React.Component {
-  
   constructor(props){
     super(props)
     this.state = {showChildren: false, calledChild: "", showEditForm: false, editChild: ""}
   }
 
   showChildren(event){
-    if (this.state.calledChild !== event.target.innerHTML && this.state.calledChild !== "")
-      { this.setState({calledChild: event.target.innerHTML}) }
+    if (this.state.calledChild !== event.target.innerHTML && this.state.calledChild !== ""){ 
+      this.setState({calledChild: event.target.innerHTML}) 
+    }
     else if (this.state.calledChild === event.target.innerHTML){
       this.setState({showChildren: !this.state.showChildren, calledChild: ""})
     }

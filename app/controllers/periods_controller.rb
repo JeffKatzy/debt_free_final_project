@@ -10,8 +10,6 @@ class PeriodsController < ApplicationController
   end
 
   def update
-    # untested in the wild
-    # byebug
     period = Period.find(params[:id])
     period.update(period_params)
     render json: {period: period}
@@ -19,9 +17,9 @@ class PeriodsController < ApplicationController
   
   def destroy
     period = Period.find(params[:id])
-    sendName = period.id
+    sendID = period.id
     period.delete 
-    render json: {id: sendName}
+    render json: {id: sendID}
   end
 
   def period_params

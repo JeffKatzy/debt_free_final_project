@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import {createCard} from '../ducks/newcard'
 import { setCard, setPeriod } from '../ducks/current'
 import { setValue } from '../ducks/tableData'
-// import {fetchCard} from '../ducks/fetchCard'
 
 class NewCard extends Component {
   constructor(props){
@@ -42,7 +41,7 @@ class NewCard extends Component {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     let date = new Date()
     this.props.setCard(this.state)
-    let payment = this.state.payment_type === "%" ? this.state.payment * this.state.debt / 1200 : this.state.payment
+    let payment = this.state.payment_type === "%" ? this.state.payment * this.state.debt / 100 : this.state.payment
     this.props.setPeriod({payment: payment, expenditure: 0})
     const newValues = {debt: this.state.debt,
                     start_month: date.getMonth(),

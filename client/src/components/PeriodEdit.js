@@ -7,6 +7,7 @@ class PeriodEdit extends Component {
   constructor(props){
     super(props)
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    //I HATE THIS
     let edited_start_month = (months.indexOf(this.props.item.start_month)+1).toString() 
     edited_start_month = (edited_start_month.length < 2) ? ("0" + edited_start_month) : edited_start_month
     let edited_end_month = (months.indexOf(this.props.item.end_month)+1).toString()
