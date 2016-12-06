@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { addPeriod } from '../ducks/userAccess.js'
+import { overWritePeriods } from '../ducks/current.js'
 
 const Form = (props) => {
 
@@ -12,11 +13,14 @@ const Form = (props) => {
   }
   const handleCard = (event) => {
     let newCardName = event.target.value
-    let newCard = props.current.user.credit_cards.filter(card=>{return card.name === newCardName})
-    props.setCard(newCard[0])
-    props.setValue(newCard[0])
+    let newCard = props.current.user.credit_cards.filter(card=>{return card.name === newCardName})[0]
+    props.setCard(newCard)
+    props.setValue(newCard)
     let cardId = newCard.id
-    props.data.user.periods
+    debugger
+    let newPeriods = props.current.user.periods.filter(period=>{return period.credit_card_id === newCard.id})
+    props.overWritePeriods(newPeriods)
+    // props.data.user.periods
     // filter on cardId
   }
 
@@ -46,4 +50,4 @@ const Form = (props) => {
   )
 }
 
-export default connect(null, {addPeriod})(Form)
+export default connect(null, {addPeriod, overWritePeriods})(Form)
