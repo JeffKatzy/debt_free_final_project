@@ -35,6 +35,7 @@ class Table extends React.Component {
     let current_month = parseFloat(this.props.data.start_month) === NaN ? this.props.data.start_month : months[this.props.data.start_month]
     let current_year = new Date().getFullYear()
     let i = 0, payment = this.props.data.payment, expenditure = this.props.data.expenditure, period = "Default";
+    let total_interest = 0
 
     while (theDebt > 0 && i < 200){
       let inPeriod = allPeriods(this.props.current.periods, current_month, current_year)
@@ -42,13 +43,13 @@ class Table extends React.Component {
         payment = inPeriod.payment
         expenditure = inPeriod.expenditure
         period = inPeriod.name
-
       }
       else {
         payment = this.props.data.payment
         expenditure = this.props.data.expenditure
         period = "Default"
       }
+      total_interest += (theDebt * (this.props.data.interest / 1200))
       future_data.push(
       <tr key={i}>
         <td key={0} className="text-left">{period}</td>
@@ -73,6 +74,8 @@ class Table extends React.Component {
     // debugger
     return (
       <div>
+        {this.props.data.debt && <h4> Months to Debt Free: {i==200 ? "Infinite" : i} </h4>}
+        {this.props.data.debt && <h4> Total Interest Paid (in Today's Dollars): ${parseData(total_interest)} </h4>}
         <table id="the_table" className="table-fill">
           <TableHead />
           {(this.props.data.start_month !== undefined && this.props.data.start_year && this.props.data.expenditure !== undefined && this.props.data.payment && this.props.data.debt) ? <TableBody data={future_data} /> : <tbody></tbody>}
