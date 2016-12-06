@@ -75,7 +75,7 @@ class Table extends React.Component {
     return (
       <div>
         {this.props.data.debt && <h4> Months to Debt Free: {i==200 ? "Infinite" : i} </h4>}
-        {this.props.data.debt && <h4> Total Interest Paid (in Today's Dollars): ${parseData(total_interest)} </h4>}
+        {this.props.data.debt && <h4> Total Interest Paid (in Today's Dollars): {i==200 ? "Infinite" : "$" + parseData(total_interest)} </h4>}
         <table id="the_table" className="table-fill">
           <TableHead />
           {(this.props.data.start_month !== undefined && this.props.data.start_year && this.props.data.expenditure !== undefined && this.props.data.payment && this.props.data.debt) ? <TableBody data={future_data} /> : <tbody></tbody>}
