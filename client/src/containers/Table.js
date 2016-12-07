@@ -71,14 +71,16 @@ class Table extends React.Component {
       }
       theDebt = theDebt - payment + expenditure + (theDebt * (this.props.data.interest / 1200))
       i += 1
+      if (theDebt > this.props.data.debt && i >= 60) {i = 360}
     }
 
     return (
-      <div><div>
-        <Chart className="six columns" id="chart" tableData={this.props} futureData={future_data} data={payment_array}/>
+      <div>
+        <div id="results">
+          {(this.props.data.debt && i==360) ? <h4>Inadequate investment to pay off debt</h4> : <h4>Months to Debt Free: {(i - 1).toString()}<br />
+                  Total Interest Paid (in Today's Dollars): ${parseData(total_interest)} </h4>}
         </div>
-          {/* {this.props.data.debt && <h4> Months to Debt Free: {i==360 ? "Infinite" : i - 1 } </h4>}
-          {this.props.data.debt && <h4> Total Interest Paid (in Today's Dollars): {i==360 ? "Infinite" : "$" + parseData(total_interest)} </h4>} */}
+        <Chart className="six columns" id="chart" tableData={this.props} futureData={future_data} data={payment_array}/>
       </div>
     )
 }

@@ -85,17 +85,34 @@ ul li {
 }
 
 .linechart {
-  /*padding-right: 5.5%;*/
   text-align: center;
   margin: 0 auto;
   float: right;
 }
 
 .recharts-wrapper {
+  margin-right: 3%;
+  padding-right: 3%;
   display: inline;
 }
 
 .table {
   margin: 0 auto;
   width: 100%;
+}
+
+#results {
+  text-align: center;
+  border-radius: 3px;
+  width: 66%;
+  margin: 0 auto;
+  background-color: rgba(100, 100, 100, .1);
+}
+
+#chartTitle {
+  color: white;
+  background-color: blue;
+  text-align: center;
+  width: 25%;
+  margin: 0 0 1% 20%;
 }

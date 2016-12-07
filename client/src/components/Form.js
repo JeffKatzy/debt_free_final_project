@@ -34,15 +34,15 @@ const Form = (props) => {
       return (<option key={i} id={card.id}>{card.name}</option>)
     })
   }
-  console.log(props)
   return (
     <div className="container" id="tableform" >
       {props.current.user !== "" && <div><h3> Credit Card(s): </h3> {props.current.card !== "" ? <select onChange={handleCard.bind(props)}>{user_cards}</select> : <p></p>}<button>Edit</button></div>}
       <h2>Default Financial Data</h2>
+      {props.data.payment &&
       <div>
-        {/* <label id="userLabel">Monthly Payment: $</label><InputBoxDoneTyping name="input-box-done-typing" type="number" placeholder="i.e.$123.45" doneTyping={handleChange.bind(props)} defaultValue={props.data.payment} doneTypingInterval={100} /> */}
-        <label id="userLabel">Monthly Expenditure: $</label><InputBoxDoneTyping name="input-box-done-typing" id="expenditure" placeholder="i.e.$123.45" doneTyping={handleChange.bind(props)} doneTypingInterval={100} />
-      </div>
+        <label id="userLabel">Monthly Payment: $</label><InputBoxDoneTyping id="payment" defaultValue={+(props.data.payment).toFixed(2)} placeholder="i.e.$123.45" doneTyping={handleChange.bind(props)} doneTypingInterval={150} />
+        <label id="userLabel">Monthly Expenditure: $</label><InputBoxDoneTyping id="expenditure" defaultValue={+(props.data.expenditure).toFixed(2)} placeholder="i.e.$123.45" doneTyping={handleChange.bind(props)} doneTypingInterval={150} />
+      </div>}
       {props.current.user !== "" && <button onClick={handleNewPeriod.bind(props)}>Add A Period</button>}
       <br />
     </div>
