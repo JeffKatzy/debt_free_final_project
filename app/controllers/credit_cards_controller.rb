@@ -21,8 +21,12 @@ class CreditCardsController < ApplicationController
     render json: cards
   end 
 
-  # def update
-  # end
+  def update
+    card = Card.find(params[:id])
+    card.update(card_params)
+    render json: {card: card}
+  end
+  
   # def destroy
   # end
 # REFACTOR HTK - add these actions 
