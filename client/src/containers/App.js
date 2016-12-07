@@ -32,7 +32,7 @@ class App extends Component {
           {((this.props.current.card && this.props.userAccess.showNewCard) || (this.props.current.user && this.props.current.user.credit_cards)) && <Form data={this.props.data} current={this.props.current} setValue={this.props.setValue} setCard={this.props.setCard} />}
         </div>
         <div className="six columns">
-          {(this.props.userAccess.showNewCard || this.props.current.user) && <Table data={this.props.data} current={this.props.current} />}
+          {((this.props.userAccess.showNewCard || this.props.current.user) && this.props.data.debt) && <Table data={this.props.data} current={this.props.current} />}
         </div>
       </div>)
     return (
