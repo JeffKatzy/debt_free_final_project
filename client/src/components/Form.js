@@ -1,4 +1,5 @@
 import React from 'react'
+import InputBoxDoneTyping from 'react-input-box-done-typing'
 import {connect} from 'react-redux'
 import { addPeriod } from '../ducks/userAccess.js'
 import { overWritePeriods } from '../ducks/current.js'
@@ -38,9 +39,9 @@ const Form = (props) => {
     <div className="container" id="tableform" >
       {props.current.user !== "" && <div><h3> Credit Card(s): </h3> {props.current.card !== "" ? <select onChange={handleCard.bind(props)}>{user_cards}</select> : <p></p>}<button>Edit</button></div>}
       <h2>Default Financial Data</h2>
-      <div onChange={handleChange.bind(props)}>
-        <label id="userLabel">Monthly Payment: $</label><input id="payment" type="number" placeholder="i.e.$123.45" defaultValue={props.data.payment}></input>
-        <label id="userLabel">Monthly Expenditure: $</label><input id="expenditure" type="number" placeholder="i.e.$123.45" defaultValue={props.data.expenditure}></input>
+      <div>
+        {/* <label id="userLabel">Monthly Payment: $</label><InputBoxDoneTyping name="input-box-done-typing" type="number" placeholder="i.e.$123.45" doneTyping={handleChange.bind(props)} defaultValue={props.data.payment} doneTypingInterval={100} /> */}
+        <label id="userLabel">Monthly Expenditure: $</label><InputBoxDoneTyping name="input-box-done-typing" id="expenditure" placeholder="i.e.$123.45" doneTyping={handleChange.bind(props)} doneTypingInterval={100} />
       </div>
       {props.current.user !== "" && <button onClick={handleNewPeriod.bind(props)}>Add A Period</button>}
       <br />
