@@ -74,10 +74,11 @@ class Table extends React.Component {
     }
 
     return (
-      <div>
+      <div><div>
         <Chart className="six columns" id="chart" tableData={this.props} futureData={future_data} data={payment_array}/>
-          {this.props.data.debt && <h4> Months to Debt Free: {i==360 ? "Infinite" : i - 1 } </h4>}
-          {this.props.data.debt && <h4> Total Interest Paid (in Today's Dollars): {i==360 ? "Infinite" : "$" + parseData(total_interest)} </h4>}
+        </div>
+          {/* {this.props.data.debt && <h4> Months to Debt Free: {i==360 ? "Infinite" : i - 1 } </h4>}
+          {this.props.data.debt && <h4> Total Interest Paid (in Today's Dollars): {i==360 ? "Infinite" : "$" + parseData(total_interest)} </h4>} */}
       </div>
     )
 }

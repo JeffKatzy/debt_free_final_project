@@ -6,12 +6,12 @@ import {LineChart, AreaChart, Area, Brush, Line, XAxis, YAxis, Tooltip, Legend} 
 const Chart = (props) => {
   console.log(props)
   return(
-    <div><div className="areachart">
-      <span className="table"><table id="the_table" className="table-fill six columns">
+    <div>
+      <table id="the_table" className="table-fill six columns">
         <TableHead />
         {(props.tableData.data.start_month !== undefined && props.tableData.data.start_year && props.tableData.data.expenditure !== undefined && props.tableData.data.payment && props.tableData.data.debt) ?<TableBody data={props.futureData} /> : <tbody></tbody>}
-      </table></span>
-      <AreaChart width={600} height={200} data={props.data.slice(0, -1)} syncId="Id"
+      </table>
+      <AreaChart className="areachart six columns" width={600} height={350} data={props.data.slice(0, -1)} syncId="Id"
         margin={{top: 10, right: 30, left: 0, bottom: 0}}>
         <XAxis dataKey="Month"/>
         <YAxis stroke="blue"/>
@@ -19,9 +19,7 @@ const Chart = (props) => {
         <Area type='monotone' dataKey='Balance' stroke='blue' fill='blue' />
         <Legend />
       </AreaChart>
-    </div>
-      <span className="linechart">
-      <LineChart width={600} height={200} data={props.data.slice(0, -1)} syncId="Id"
+      <LineChart className="linechart six columns" width={600} height={350} data={props.data.slice(0, -1)} syncId="Id"
         margin={{top: 10, right: 30, left: 0, bottom: 0}}>
         <XAxis dataKey="Month"/>
         <YAxis yAxisId="left" orientation="left" stroke="brown"/>
@@ -32,7 +30,6 @@ const Chart = (props) => {
         <Line yAxisId="right" type="monotone" dataKey="Interest" stroke="orange"/>
         <Legend />
       </LineChart>
-    </span>
 </div>
   )
 }

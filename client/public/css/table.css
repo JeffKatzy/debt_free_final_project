@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Arvo');
 
-#the_table body {
-  font-family: 'Arvo', serif;
-  font-size: 16px;
-  font-weight: 400;
-  text-rendering: optimizeLegibility;
+#the_table {
+  /*padding-left: 5.5%;*/
+  font-size: 12px;
+  /*margin: 0 auto;*/
+  /*width: 600px;*/
+  /*width: 100%;*/
+  margin: 5px 10px 5px 3%;
 }
 
 #the_table div.table-title {
@@ -27,14 +29,14 @@
 
 
 .table-fill {
-  background: white;
-  border-radius:3px;
-  border-collapse: collapse;
-  height: 320px;
-  margin: auto;
-  max-width: 600px;
-  padding:5px;
-  width: 100%;
+  /*background: white;*/
+  /*border-radius:0px;*/
+  border-collapse:collapse;
+  /*height: 320px;*/
+  /*margin: auto;*/
+  /*max-width: 600px;*/
+  /*padding:5px;*/
+  /*width: 100%;*/
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   animation: float 5s infinite;
 }
@@ -115,7 +117,7 @@ td:first-child {
   vertical-align:middle;
   padding-left: 10px;
   font-weight:300;
-  font-size:18px;
+  font-size:10px;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
   border-right: 1px solid #C1C3D1;
 }
@@ -147,4 +149,8 @@ td:first-child {
 
 #the_table td.text-right {
   text-align: right;
+}
+
+#the_table .columns {
+  float: left;
 }
