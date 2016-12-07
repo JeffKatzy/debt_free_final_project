@@ -1,6 +1,6 @@
 class CreditCardsController < ApplicationController
   skip_before_action :authenticate_user
-  
+
   def create
     params[:card][:min_payment] = params[:card][:payment]
     card = CreditCard.new(card_params)
@@ -14,12 +14,12 @@ class CreditCardsController < ApplicationController
   def show
     card = CreditCard.find(params[:id])
     render json: card
-  end 
+  end
 
   def index
     cards = CreditCard.all
     render json: cards
-  end 
+  end
 
   def update
     card = Card.find(params[:id])
@@ -29,10 +29,10 @@ class CreditCardsController < ApplicationController
   
   # def destroy
   # end
-# REFACTOR HTK - add these actions 
+# REFACTOR HTK - add these actions
 
   def card_params
     params.require(:card).permit(:name, :debt, :interest_rate, :user_id, :min_payment)
-  end 
+  end
 
 end
