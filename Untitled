@@ -1,0 +1,5 @@
+arr = ["a", "b", "c", "d","a", "b", "c", "d","a", "b", "c", "d","a", "b", "c", "d"]
+
+def count(array)
+  array.inject(Hash.new(0)){|hash, ele| hash[ele] += 1; hash}
+end

@@ -3,12 +3,13 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:auth][:email])
-    if user.authenticate(params[:auth][:password])
+    if user == nil
+      render status: 404, json: {error: "No user with that email address exists in our system"}
+    elsif !user.authenticate(params[:auth][:password])
+      render status: 404, json: {error: "Email/password combination is invalid"}
+    else 
       jwt = Auth.issue({user_id: user.id})
-      # byebug
       render json: {jwt: jwt, user:user}
-      # render json: {jwt: jwt}, {user: user}, serializer: UserSerializer
-      # render json: {jwt: jwt, user_id: user.id, user: user, last_period: user.periods.last, last_card: user.periods.last.credit_card}
     end
   end
   

@@ -8,30 +8,25 @@ class SinglePeriod extends Component {
     super(props)
     this.state = {}
   }
+  
   deleteThing(event){
     this.props.deletePeriodFromRails(event.target.id)
   }
     
 
-    // render the data as a form/new form component with the current value as default value 
-    // then on save, dispatch editPeriod from newperiod.js
-    // EDIT PERIOD action in RAILS 
-    // then dispatch setPeriod and addPeriodToUser ? make sure that works
-
-    render(){
-    return (
-               <span id={this.props.item.id}>{
-                this.props.showChildren && (this.props.calledChild === this.props.item.name) ?
-                  <ul className="middleList">
-                    <li>Start Date: {this.props.item.start_month} {this.props.item.start_year} </li>
-                    <li>End Date: {this.props.item.end_month} {this.props.item.end_year} </li>
-                    <li>Payment: ${this.props.item.payment} </li>
-                    <li>Expenditure: ${this.props.item.expenditure} </li>
-                    <input type="button" id={this.props.item.id} onClick={this.deleteThing.bind(this)} value="delete period" />
-                    <input type="button" id={this.props.item.id} onClick={this.props.editButton} value="edit period" />
-
-                  </ul>  : <span></span> }</span>
-            )
+  render(){
+  return (
+            <span id={this.props.item.id}>{
+              this.props.showChildren && (this.props.calledChild === this.props.item.name) ?
+                <ul className="middleList">
+                  <li>Start Date: {this.props.item.start_month} {this.props.item.start_year} </li>
+                  <li>End Date: {this.props.item.end_month} {this.props.item.end_year} </li>
+                  <li>Payment: ${this.props.item.payment} </li>
+                  <li>Expenditure: ${this.props.item.expenditure} </li>
+                  <input type="button" id={this.props.item.id} onClick={this.deleteThing.bind(this)} value="delete period" />
+                  <input type="button" id={this.props.item.id} onClick={this.props.editButton} value="edit period" />
+                </ul>  : <span></span> }</span>
+          )
     }
 
 }

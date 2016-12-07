@@ -73,11 +73,14 @@ class NewCard extends Component {
          <p><input type="submit" onClick={this.setSubmit.bind(this)} id="preview" value="preview" /></p>
          {this.props.current.user !== "" ? <p><input type="submit" onClick={this.setSubmit.bind(this)} id="rails" value="store" /></p> : <span />}
       </form>
+      {this.props.newCard.error ? <h2 className="error">{this.props.newCard.error}</h2> : <span /> }
       </div>
       )
 
   }
 
 }
-
-export default connect(null, { createCard,setCard,setPeriod,setValue })(NewCard)
+function mapStateToProps(state){
+  return {newCard: state.newCard}
+}
+export default connect(mapStateToProps, { createCard,setCard,setPeriod,setValue })(NewCard)

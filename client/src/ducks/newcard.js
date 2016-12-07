@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import { browserHistory } from 'react-router'
-// import {initialState, setInitial} from './period'
 import {setCard, addNewCardtoUser} from './current'
 
 export function createCard(formData){
@@ -11,22 +10,25 @@ export function createCard(formData){
       type: 'POST',
       data: {card: formData},
       headers: {authorization: localStorage.getItem('token')}
-    }).done((response) => { 
-      // dispatch(persistCard(response))
+    }).then((response) => { 
       dispatch(setCard(response.card))
       dispatch(addNewCardtoUser(response.card))
       dispatch(foundCard())
+    }).catch((response)=>{
+      let errors = response.responseJSON.error.join(', ')
+      dispatch(cardError(errors))
     })
   }
 }
 
-export default(state = {finding_card: false}, action) => {
+export default(state = {finding_card: false, error: ''}, action) => {
   switch (action.type) {
     case 'FINDING_CARD':
       return Object.assign({}, state, {finding_card: true})
     case 'FOUND_CARD':
-      return Object.assign({}, state, {finding_card: false})
-
+      return Object.assign({}, state, {finding_card: false, error: ''})
+    case 'NEW_CARD_ERROR':
+      return Object.assign({}, state, {error: action.payload})
     default:
       return state
   }
@@ -35,5 +37,5 @@ export default(state = {finding_card: false}, action) => {
 
 export const findingCard = () => ({type: 'FINDING_CARD'})
 export const foundCard = () => ({type: 'FOUND_CARD'})
-
+export const cardError = (input) => ({type: 'NEW_CARD_ERROR', payload: input})
 // export const persistCard = (response) => ({type: 'PERSIST_CARD', card: response.card})

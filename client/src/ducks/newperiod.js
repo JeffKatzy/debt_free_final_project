@@ -4,7 +4,6 @@ import {setPeriod, addPeriodToUser, removePeriodFromUser, removePeriodFromCurren
 
 
 export function createPeriod(formData){
-  
   return function(dispatch){
     dispatch(findingPeriod())
     $.ajax({
@@ -12,9 +11,13 @@ export function createPeriod(formData){
       type: 'POST',
       data: {period: formData},
       headers: {authorization: localStorage.getItem('token')}
-    }).done((response) => { 
+    }).then((response) => { 
       dispatch(setPeriod([response.period]))
       dispatch(foundPeriod())
+    }).catch((response)=>{
+      debugger
+      let errors = response.responseJSON.error.join(', ')
+      dispatch(periodError(errors))
     })
   }
 }
@@ -28,29 +31,28 @@ export function editPeriod(formData){
       data: {period: formData},
       headers: {authorization: localStorage.getItem('token')}
     }).done((response) => { 
-      // debugger      
       dispatch(removePeriodFromCurrent(response.period.id)) 
       dispatch(removePeriodFromUser(response.period.id))
       dispatch(setPeriod([response.period]))
       dispatch(addPeriodToUser(response.period))
       dispatch(foundPeriod())
     })
-
   }
-
 }
 
-export default(state = {finding_period: false}, action) => {
+export default(state = {finding_period: false, error: ''}, action) => {
   switch (action.type) {
     case 'FINDING_PERIOD':
       return Object.assign({}, state, {finding_period: true})
     case 'FOUND_PERIOD':
-      return Object.assign({}, state, {finding_period: false})
+      return Object.assign({}, state, {finding_period: false, error: ''})
+    case 'PERIOD_ERROR':
+      return Object.assign({}, state, {error: action.payload}) 
     default:
       return state
   }
 }
 
-
+export const periodError = (input) => ({type: 'PERIOD_ERROR', payload: input})
 export const findingPeriod = () => ({type: 'FINDING_PERIOD'})
 export const foundPeriod = () => ({type: 'FOUND_PERIOD'})

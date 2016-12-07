@@ -70,8 +70,9 @@ class Table extends React.Component {
       }
       theDebt = theDebt - payment + expenditure + (theDebt * (this.props.data.interest / 1200))
       i += 1
-      payment_array.push({month:i, payment: parseFloat(parseData(payment)), expenditure: parseFloat(parseData(expenditure)), interest: parseFloat(parseData(theDebt * (this.props.data.interest / 1200))), balance: parseFloat(parseData(theDebt - payment + expenditure + (theDebt * (this.props.data.interest / 1200))))})
+      payment_array.push({month:i, payment: parseFloat(payment.toFixed(2)), expenditure: parseFloat(expenditure.toFixed(2)), interest_payed: parseFloat((theDebt * (this.props.data.interest / 1200)).toFixed(2)), balance: parseFloat((theDebt - payment + expenditure + (theDebt * (this.props.data.interest / 1200))).toFixed(2))})
     }
+
     return (
       <div>
         <Chart data={payment_array}/>

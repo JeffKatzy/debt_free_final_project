@@ -5,7 +5,7 @@ class PeriodsController < ApplicationController
     if period.save
       render json: {period: period}
     else
-      render json: {error: 'something is wrong with your data'}
+      render status: 404, json: {error: period.errors.full_messages}
     end
   end
 

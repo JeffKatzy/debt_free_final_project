@@ -52,9 +52,14 @@ class NewPeriod extends Component {
         <label id="userLabel">Monthly Payment</label><input type="number" id="period[payment]" step="100" onChange={this.handlePayment.bind(this)} /></p>
         <p><input type="submit"/></p>
       </form>
+        {this.props.newPeriod.error ? <h2 className="error">{this.props.newPeriod.error}</h2> : <span /> }
       </div>
       )
   }
 }
+function mapStateToProps(state){
+  return {newPeriod: state.newPeriod}
+}
 
-export default connect(null, { createPeriod, addPeriodToUser })(NewPeriod)
+
+export default connect(mapStateToProps, { createPeriod, addPeriodToUser })(NewPeriod)
