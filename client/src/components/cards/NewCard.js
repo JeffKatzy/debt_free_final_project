@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import {createCard} from '../ducks/newcard'
-import { setCard, setPeriod } from '../ducks/current'
-import { setValue } from '../ducks/tableData'
+import {createCard} from '../../ducks/newcard'
+import { setCard, setPeriod } from '../../ducks/current'
+import { setValue } from '../../ducks/tableData'
 
 class NewCard extends Component {
   constructor(props){
