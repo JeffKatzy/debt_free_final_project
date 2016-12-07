@@ -79,3 +79,7 @@ select {
 ul li {
   display: inline;
 }
+
+.chart {
+  text-align: center;
+}

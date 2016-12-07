@@ -4,10 +4,10 @@ import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'rec
 
 const Chart = (props) => {
   return(
-    <div className="container">
-      <LineChart width={800} height={500} data={props.data}
+    <div>
+      <LineChart width={800} height={500} data={props.data.slice(0, -1)}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-        <XAxis dataKey="month"/>
+        <XAxis dataKey="Month"/>
         <YAxis />
         <Tooltip />
         <Legend />

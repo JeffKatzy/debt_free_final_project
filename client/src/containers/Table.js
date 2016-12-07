@@ -75,9 +75,9 @@ class Table extends React.Component {
 
     return (
       <div>
-        <Chart data={payment_array}/>
+        <Chart className="twelve columns" id="chart" data={payment_array}/>
         <div>
-          {this.props.data.debt && <h4> Months to Debt Free: {i==200 ? "Infinite" : i} </h4>}
+          {this.props.data.debt && <h4> Months to Debt Free: {i==200 ? "Infinite" : i - 1} </h4>}
           {this.props.data.debt && <h4> Total Interest Paid (in Today's Dollars): {i==200 ? "Infinite" : "$" + parseData(total_interest)} </h4>}
           <table id="the_table" className="table-fill">
             <TableHead />
