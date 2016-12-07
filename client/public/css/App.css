@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Arvo|PT+Sans|Reem+Kufi');
 
-
-
 .App-header {
   background-color: #222;
   height: 150px;
@@ -80,6 +78,15 @@ ul li {
   display: inline;
 }
 
-.chart {
+.areachart {
   text-align: center;
+  margin: 0 auto;
+  width: 600px;
+}
+
+.linechart {
+  padding-left: 30px; 
+  text-align: center;
+  margin: 0 auto;
+  width: 600px;
 }
