@@ -8,13 +8,14 @@ const Chart = (props) => {
       <LineChart width={800} height={500} data={props.data.slice(0, -1)}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
         <XAxis dataKey="Month"/>
-        <YAxis />
+        <YAxis yAxisId="left" orientation="left" stroke="#8884d8"/>
+        <YAxis yAxisId="right" orientation="right" stroke="#82ca9d"/>
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="Payment" stroke="black"/>
-        <Line type="monotone" dataKey="Expenditure" stroke="red"/>
-        <Line type="monotone" dataKey="Interest" stroke="green"/>
-        <Line type="monotone" dataKey="Balance" stroke="blue"/>
+        <Line yAxisId="right" type="monotone" dataKey="Payment" stroke="black"/>
+        <Line yAxisId="right" type="monotone" dataKey="Expenditure" stroke="red"/>
+        <Line yAxisId="right" type="monotone" dataKey="Interest" stroke="green"/>
+        <Line yAxisId="left" type="monotone" dataKey="Balance" stroke="blue"/>
         <CartesianGrid />
     </LineChart>
     </div>
