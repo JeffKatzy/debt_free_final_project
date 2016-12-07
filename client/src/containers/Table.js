@@ -75,15 +75,13 @@ class Table extends React.Component {
 
     return (
       <div>
-        <Chart className="six columns" id="chart" data={payment_array}/>
-        <div>
-          {this.props.data.debt && <h4> Months to Debt Free: {i==360 ? "Infinite" : i - 1 } </h4>}
-          {this.props.data.debt && <h4> Total Interest Paid (in Today's Dollars): {i==360 ? "Infinite" : "$" + parseData(total_interest)} </h4>}
-          <table id="the_table" className="table-fill">
+        <Chart className="six columns" id="chart" tableData={this.props} futureData={future_data} data={payment_array}/>
+          {/* {this.props.data.debt && <h4> Months to Debt Free: {i==360 ? "Infinite" : i - 1 } </h4>}
+          {this.props.data.debt && <h4> Total Interest Paid (in Today's Dollars): {i==360 ? "Infinite" : "$" + parseData(total_interest)} </h4>} */}
+          {/* <table id="the_table" className="table-fill five columns">
             <TableHead />
             {(this.props.data.start_month !== undefined && this.props.data.start_year && this.props.data.expenditure !== undefined && this.props.data.payment && this.props.data.debt) ? <TableBody data={future_data} /> : <tbody></tbody>}
-          </table>
-        </div>
+          </table> */}
       </div>
     )
 }

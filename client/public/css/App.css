@@ -81,12 +81,21 @@ ul li {
 .areachart {
   text-align: center;
   margin: 0 auto;
-  width: 600px;
+  float: right;
 }
 
 .linechart {
-  padding-left: 30px; 
+  padding-left: 30px;
   text-align: center;
   margin: 0 auto;
-  width: 600px;
+  float: right;
+}
+
+.recharts-wrapper {
+  display: inline;
+}
+
+.table {
+  margin: 0 auto;
+  width: 100%;
 }
