@@ -12,6 +12,7 @@ const Chart = (props) => {
         <Line type="monotone" dataKey="Payment" stroke="green"/>
         <Line type="monotone" dataKey="Expenditure" stroke="red"/>
         <Line type="monotone" dataKey="Interest" stroke="black"/>
+        <Legend />
       </LineChart>
       <AreaChart width={600} height={200} data={props.data.slice(0, -1)} syncId="Id"
         margin={{top: 10, right: 30, left: 0, bottom: 0}}>
@@ -20,6 +21,7 @@ const Chart = (props) => {
         <Tooltip/>
         <Area type='monotone' dataKey='Balance' stroke='blue' fill='blue' />
         <Brush />
+        <Legend />
       </AreaChart>
 
 
