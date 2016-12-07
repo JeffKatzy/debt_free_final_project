@@ -2,9 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import SignUp from '../components/users/SignUp.js'
 import SignIn from '../components/users/SignIn.js'
-import NewCard from '../components/NewCard.js'
+import NewCard from '../components/cards/NewCard.js'
 import SignOut from '../components/users/SignOut.js'
 import { signIn, signUp,showNewCard,addPeriod,showPeriods,allFalse } from '../ducks/userAccess.js'
+import signOutUser from '../ducks/signout'
 import '../../public/css/navbar.css'
 
 function handleTabs(event){
@@ -29,7 +30,7 @@ function handleTabs(event){
 
 function handleClick(event){
   event.preventDefault()
-  localStorage.removeItem("token")
+  this.props.signOutUser()
 }
 
 class Navbar extends React.Component {
@@ -49,8 +50,9 @@ class Navbar extends React.Component {
         {this.props.userAccess.showSignUp ? <SignUp /> : <p />}
         {this.props.userAccess.showSignIn ? <SignIn /> : <p />}
         {this.props.userAccess.addCreditCard ? <NewCard current={this.props.current} /> : <p />}
+        {}
       </div>
     )
 }}
 
-export default connect(null, { signIn,signUp,showNewCard,addPeriod,showPeriods,allFalse })(Navbar)
+export default connect(null, { signIn,signUp,showNewCard,addPeriod,showPeriods,allFalse, signOutUser})(Navbar)

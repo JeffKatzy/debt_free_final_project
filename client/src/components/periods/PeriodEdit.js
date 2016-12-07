@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import {editPeriod} from '../ducks/newperiod'
-import {addPeriodToUser} from '../ducks/current'
+import {editPeriod} from '../../ducks/newperiod'
+import {addPeriodToUser} from '../../ducks/current'
 
 class PeriodEdit extends Component {
   constructor(props){

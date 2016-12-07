@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { deletePeriodFromRails } from '../ducks/current'
+import { deletePeriodFromRails } from '../../ducks/current'
 
 class SinglePeriod extends Component {
 
@@ -8,11 +8,11 @@ class SinglePeriod extends Component {
     super(props)
     this.state = {}
   }
-  
+
   deleteThing(event){
     this.props.deletePeriodFromRails(event.target.id)
   }
-    
+
 
   render(){
   return (
