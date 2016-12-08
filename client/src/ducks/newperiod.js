@@ -11,11 +11,10 @@ export function createPeriod(formData){
       type: 'POST',
       data: {period: formData},
       headers: {authorization: localStorage.getItem('token')}
-    }).then((response) => { 
+    }).then((response) => {
       dispatch(setPeriod([response.period]))
       dispatch(foundPeriod())
     }).catch((response)=>{
-      debugger
       let errors = response.responseJSON.error.join(', ')
       dispatch(periodError(errors))
     })
@@ -30,8 +29,8 @@ export function editPeriod(formData){
       type: 'PATCH',
       data: {period: formData},
       headers: {authorization: localStorage.getItem('token')}
-    }).done((response) => { 
-      dispatch(removePeriodFromCurrent(response.period.id)) 
+    }).done((response) => {
+      dispatch(removePeriodFromCurrent(response.period.id))
       dispatch(removePeriodFromUser(response.period.id))
       dispatch(setPeriod([response.period]))
       dispatch(addPeriodToUser(response.period))
@@ -47,7 +46,7 @@ export default(state = {finding_period: false, error: ''}, action) => {
     case 'FOUND_PERIOD':
       return Object.assign({}, state, {finding_period: false, error: ''})
     case 'PERIOD_ERROR':
-      return Object.assign({}, state, {error: action.payload}) 
+      return Object.assign({}, state, {error: action.payload})
     default:
       return state
   }

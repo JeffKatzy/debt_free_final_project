@@ -28,7 +28,7 @@ const Form = (props) => {
   }
 
   let user_cards
-  if (props.current.user) {
+  if (props.current.user && props.current.user.credit_cards) {
     user_cards =
     props.current.user.credit_cards.map((card, i)=> {
       return (<option key={i} id={card.id}>{card.name}</option>)

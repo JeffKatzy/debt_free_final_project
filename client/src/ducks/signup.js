@@ -13,7 +13,6 @@ export function createUser(formData){
       contentType:"application/json; charset=utf-8",
       datatype: 'json'
     }).then((response) => {
-      debugger
       localStorage.setItem('token', response.jwt)
       dispatch(setCurrentUser(response.user))
       dispatch(loginUser())
