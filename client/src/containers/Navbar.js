@@ -1,15 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import SignUp from '../components/users/SignUp.js'
-import SignIn from '../components/users/SignIn.js'
-import NewCard from '../components/cards/NewCard.js'
-import SignOut from '../components/users/SignOut.js'
-import { signIn, signUp,showNewCard,addPeriod,showPeriods,allFalse } from '../ducks/userAccess.js'
+import SignUp from '../components/users/SignUp'
+import SignIn from '../components/users/SignIn'
+import NewCard from '../components/cards/NewCard'
+import SignOut from '../components/users/SignOut'
+import { signIn, signUp,showNewCard,addPeriod,showPeriods,allFalse } from '../ducks/userAccess'
 import signOutUser from '../ducks/signout'
 import '../../public/css/navbar.css'
 
 function handleTabs(event){
-  console.log(event.target.innerText)
   this.props.allFalse()
   if (event.target.innerText === "SIGN UP"){
     this.props.signUp()
@@ -36,7 +35,7 @@ function handleClick(event){
 class Navbar extends React.Component {
 
   render() {
-
+    console.log(this.props)
     return (
       <div id="navbar">
         <span id="title">Debt Free</span>
@@ -47,7 +46,7 @@ class Navbar extends React.Component {
         {this.props.current.user ? <button onClick={handleTabs.bind(this)}>Add a Period</button> : <span />}
         {this.props.current.user ? <button onClick={handleTabs.bind(this)}>View Periods</button> : <span />}
         <br />
-        {this.props.userAccess.showSignUp ? <SignUp /> : <p />}
+        {this.props.userAccess.showSignUp && this.props.signingup ? <SignUp /> : <p />}
         {this.props.userAccess.showSignIn ? <SignIn /> : <p />}
         {this.props.userAccess.addCreditCard ? <NewCard current={this.props.current} /> : <p />}
         {}
@@ -55,4 +54,4 @@ class Navbar extends React.Component {
     )
 }}
 
-export default connect(null, { signIn,signUp,showNewCard,addPeriod,showPeriods,allFalse, signOutUser})(Navbar)
+export default connect(null, {signIn,signUp,showNewCard,addPeriod,showPeriods,allFalse, signOutUser})(Navbar)

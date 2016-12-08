@@ -19,10 +19,6 @@ function allPeriods(periods, current_month, current_year) {
     if (period_start_date <= current_date && current_date <= period_end_date) {
       return periods[i]
     }
-    // if (period_start_date <= current_date <= period_end_date) {
-    //   // debugger
-    //   return periods[i]
-    // }
   }
   return false
 }
@@ -66,7 +62,6 @@ class Table extends React.Component {
         current_month = "January"
         current_year += 1
       } else {
-        // debugger
         current_month = months[months.indexOf(current_month) + 1]
       }
       theDebt = theDebt - payment + expenditure + (theDebt * (this.props.data.interest / 1200))
@@ -83,7 +78,7 @@ class Table extends React.Component {
         <Chart className="six columns" id="chart" tableData={this.props} futureData={future_data} data={payment_array}/>
       </div>
     )
-}
+  }
 }
 
 module.exports = Table

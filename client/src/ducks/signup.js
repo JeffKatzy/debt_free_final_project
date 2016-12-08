@@ -24,13 +24,13 @@ export function createUser(formData){
   }
 }
 
-export default(state = {creating_user: false, error: ''}, action) => {
+export default(state = {creating_user: false, error: '', signingup: true}, action) => {
   switch (action.type) {
     case 'FINDING_USER':
-      return Object.assign({}, state, {creating_user: true})
+      return Object.assign({}, state, {creating_user: true, signingup: true})
     case 'LOGIN_CREATED_USER':
-      return Object.assign({}, state, {creating_user: false, error: ''})
-    case 'SIGN_UP_ERROR': 
+      return Object.assign({}, state, {creating_user: false, error: '', signingup: false})
+    case 'SIGN_UP_ERROR':
       return Object.assign({}, state, {error: action.payload})
     default:
       return state

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import Navbar from '../containers/Navbar.js'
-import Form from '../components/Form.js'
-import Table from './Table.js'
+import Navbar from '../containers/Navbar'
+import Form from '../components/Form'
+import Table from './Table'
 import NewCard from '../components/cards/NewCard'
 import NewPeriod from '../components/periods/NewPeriod'
 import PeriodList from '../components/periods/PeriodList'
@@ -13,11 +13,10 @@ import '../../public/css/App.css';
 
 class App extends Component {
   render() {
-    console.log(this.props)
     let contents = (
       <div>
         <div className="container">
-          <Navbar userAccess={this.props.userAccess} current={this.props.current} />
+          <Navbar signingup={this.props.signup.signingup} userAccess={this.props.userAccess} current={this.props.current} />
         </div>
         <div className="container">
           {this.props.userAccess.showPeriodList && <PeriodList data={this.props.current} removePeriodFromCurrent={this.props.removePeriodFromCurrent} setPeriod={this.props.setPeriod} />}
@@ -40,12 +39,12 @@ class App extends Component {
         {this.props.children}
         {contents}
       </div>
-    );
+    )
   }
 }
 
 function mapStateToProps(state){
-  return {data: state.tableData, current: state.current, userAccess: state.userAccess}
+  return {data: state.tableData, current: state.current, userAccess: state.userAccess, signup: state.signup}
 }
 
 function mapDispatchToProps(dispatch){
