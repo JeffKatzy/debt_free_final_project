@@ -6,7 +6,6 @@ class CreditCardsController < ApplicationController
   def create
     params[:card][:min_payment] = params[:card][:payment]
     params[:card][:user_id] = current_user.id
-    byebug
     card = CreditCard.new(card_params)
     if card.save
       render json: {card: card}
